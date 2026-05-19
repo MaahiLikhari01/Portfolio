@@ -39,7 +39,15 @@
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-y:scroll}
+/* prevent scroll when modal open */
+html.modal-open body{
+  overflow:hidden;
+  position:fixed;
+  width:100%;
+}
+html.modal-open::-webkit-scrollbar{width:0 !important;display:none !important}
+html.modal-open{scrollbar-width:none !important}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;cursor:none;font-size:15px;line-height:1.65}
 
 /* CURSOR */
@@ -197,9 +205,9 @@ nav{
 }
 .about-photo img{width:100%;height:100%;object-fit:cover}
 .about-card-name{font-size:.95rem;font-weight:700;color:var(--ink)}
-.about-card-role{font-family:var(--mono);font-size:.63rem;color:var(--mid);letter-spacing:.04em;margin-top:.15rem}
-.about-card-location{font-family:var(--mono);font-size:.6rem;color:var(--faint);margin-top:.1rem}
-.about-card-status{display:flex;align-items:center;justify-content:center;gap:.4rem;font-family:var(--mono);font-size:.6rem;color:var(--mid);margin-top:.6rem;flex-wrap:wrap}
+.about-card-role{font-family:var(--mono);font-size:.65rem;color:var(--ink);letter-spacing:.04em;margin-top:.2rem;opacity:.75}
+.about-card-location{font-family:var(--mono);font-size:.68rem;color:var(--mid);margin-top:.25rem;font-weight:500}
+.about-card-status{display:flex;align-items:center;justify-content:center;gap:.4rem;font-family:var(--mono);font-size:.62rem;color:var(--mid);margin-top:.5rem;flex-wrap:wrap}
 .about-dot{width:6px;height:6px;border-radius:50%;background:#6db87a;flex-shrink:0}
 .about-text{}
 .about-p{font-size:.88rem;line-height:1.95;color:var(--mid);margin-bottom:1rem}
@@ -207,8 +215,8 @@ nav{
 .about-actions{display:flex;gap:.8rem;margin-top:1.8rem;flex-wrap:wrap}
 .about-btn-solid{font-size:.72rem;font-weight:600;padding:.55rem 1.3rem;background:var(--ink);color:var(--white);border-radius:4px;text-decoration:none;transition:background .15s;cursor:none;display:inline-block}
 .about-btn-solid:hover{background:var(--accent);color:#fff}
-.about-btn-outline{font-size:.72rem;font-weight:600;padding:.55rem 1.3rem;border:1px solid var(--rule);color:var(--faint);border-radius:4px;text-decoration:none;transition:all .15s;cursor:none;display:inline-block}
-.about-btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.about-btn-outline{font-size:.72rem;font-weight:600;padding:.55rem 1.3rem;border:1px solid var(--mid);color:var(--ink);border-radius:4px;text-decoration:none;transition:all .15s;cursor:none;display:inline-block}
+.about-btn-outline:hover{border-color:var(--accent);color:var(--accent)}
 
 /* SECTION BAR */
 .sec-bar{
@@ -278,7 +286,8 @@ nav{
 .title-card{
   position:relative;overflow:hidden;
   border-right:1px solid var(--rule);
-  height:0;padding-bottom:25%;cursor:none;
+  height:180px;
+  cursor:none;
   flex:1;min-width:0;
 }
 .title-card:last-child{border-right:none}
@@ -310,13 +319,13 @@ nav{
   background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
   z-index:3;
 }
-.title-studio{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem;opacity:.9}
-.title-game{font-family:var(--sans);font-size:1.2rem;font-weight:700;color:#faf7f2;margin-bottom:.2rem;line-height:1.1}
-.title-role{font-size:.7rem;color:rgba(250,247,242,.55);margin-bottom:.5rem;font-family:var(--mono)}
+.title-studio{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem;opacity:.9}
+.title-game{font-family:var(--sans);font-size:1rem;font-weight:700;color:#faf7f2;margin-bottom:.15rem;line-height:1.1}
+.title-role{font-size:.62rem;color:rgba(250,247,242,.55);margin-bottom:.4rem;font-family:var(--mono)}
 .title-foot{display:flex;align-items:center;justify-content:space-between}
-.title-year{font-family:var(--mono);font-size:.62rem;color:rgba(250,247,242,.4)}
+.title-year{font-family:var(--mono);font-size:.58rem;color:rgba(250,247,242,.4)}
 .title-platforms{display:flex;gap:.3rem;flex-wrap:wrap}
-.platform{font-family:var(--mono);font-size:.52rem;padding:.12rem .4rem;border:1px solid rgba(250,247,242,.2);color:rgba(250,247,242,.5);border-radius:2px}
+.platform{font-family:var(--mono);font-size:.5rem;padding:.1rem .35rem;border:1px solid rgba(250,247,242,.2);color:rgba(250,247,242,.5);border-radius:2px}
 
 /* EXPERIENCE */
 #experience{border-bottom:1px solid var(--rule)}
@@ -345,9 +354,9 @@ nav{
 .ebody{font-size:.8rem;line-height:1.8;color:var(--mid);max-width:580px;margin-bottom:.2rem}
 .echips{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.7rem}
 .echip{font-family:var(--mono);font-size:.58rem;padding:.18rem .5rem;border:1px solid var(--rule);color:var(--mid);border-radius:2px;background:var(--bg)}
-.ebullets{list-style:none;margin-top:.65rem;display:flex;flex-direction:column;gap:.5rem;max-width:560px}
-.ebullets li{font-size:.78rem;line-height:1.7;color:var(--mid);display:flex;align-items:flex-start;gap:.65rem}
-.ebullets li::before{content:'—';color:var(--accent);flex-shrink:0;font-size:.75rem;padding-top:.05rem}
+.ebullets{margin-top:.8rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:.55rem;max-width:560px;list-style:disc}
+.ebullets li{font-size:.78rem;line-height:1.65;color:var(--mid)}
+.ebullets li::marker{color:var(--accent)}
 
 /* SKILLS */
 #skills{border-bottom:1px solid var(--rule)}
@@ -472,39 +481,265 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 .reveal.in{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
-@media(max-width:1024px){
-}
-@media(max-width:700px){
-}
+/* ── TABLET ── */
 @media(max-width:900px){
-  .intro-inner{grid-template-columns:1fr;gap:1.2rem}
-  .intro-meta{text-align:left}
-  .skills-grid{grid-template-columns:1fr 1fr}
-  .skill-col:nth-child(2){border-right:none}
-  .skill-col:nth-child(3){border-right:1px solid var(--rule)}
-  
-  
-  .contact-inner{grid-template-columns:1fr}
-  .contact-left{border-right:none;border-bottom:1px solid var(--rule)}
-  .erow{grid-template-columns:1fr}
-  .erow-l{border-right:none;border-bottom:1px solid var(--rule);padding-bottom:1rem}
+  /* NAV */
+  nav{padding:0 1.5rem;height:48px}
   .nav-r a{display:none}
+  .nav-name{font-size:.85rem}
+
+  /* INTRO */
+  .intro-inner{grid-template-columns:1fr;gap:1rem;padding:3rem 1.5rem 2rem}
+  .intro-meta{text-align:left}
+  .intro-name{font-size:clamp(2rem,8vw,3.5rem)}
+
+  /* WORK */
+  .sec-bar{padding:.75rem 1.5rem}
   .wgrid{grid-template-columns:repeat(2,1fr)}
   .wc:nth-child(3n){border-right:1px solid var(--rule)}
   .wc:nth-child(2n){border-right:none}
   .wc:nth-child(5),.wc:nth-child(6){border-bottom:none}
   .wc:nth-child(4){border-bottom:1px solid var(--rule)}
-}
-@media(max-width:600px){
-  body{cursor:auto}#cur,#cur-r{position:fixed;width:30px;height:30px;border:1.5px solid rgba(196,94,26,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);left:-20px;top:-20px;transition:width .2s,height .2s}
-  .skills-grid{grid-template-columns:1fr}
-  .skill-col{border-right:none}
+  .wc{padding-bottom:50vw}
+
+  /* TITLES */
+  .titles-grid{flex-wrap:wrap}
+  .title-card{flex:0 0 50%;height:140px}
+  .title-card:nth-child(2n){border-right:none}
+  .title-card:nth-child(3),.title-card:nth-child(4){border-top:1px solid var(--rule)}
+
+  /* EXPERIENCE */
+  .erow{grid-template-columns:1fr}
+  .erow-l{border-right:none;border-bottom:1px solid var(--rule);padding:1.2rem 1.5rem}
+  .erow-r{padding:1.2rem 1.5rem}
+
+  /* SKILLS */
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .skill-col:nth-child(2){border-right:none}
+  .skill-col:nth-child(3){border-right:1px solid var(--rule)}
+  .skill-col{padding:1.5rem}
+
+  /* ABOUT */
+  .about-inner{grid-template-columns:1fr;padding:3rem 1.5rem;gap:2rem}
+  .about-photo-col{flex-direction:row;text-align:left;gap:1.2rem;align-items:center}
+  .about-photo{width:80px;height:80px;flex-shrink:0;margin-bottom:0}
+  .about-card-name{font-size:.88rem}
+
+  /* CONTACT */
+  .contact-inner{grid-template-columns:1fr}
+  .contact-left{border-right:none;border-bottom:1px solid var(--rule);padding:2rem 1.5rem}
+  .contact-right{padding:2rem 1.5rem}
   .crow{grid-template-columns:1fr}
-  .wgrid{grid-template-columns:1fr}
-  .wc:nth-child(3n),.wc:nth-child(2n){border-right:none}
-  .wc{border-bottom:1px solid var(--rule)}
-  .wc:nth-child(6){border-bottom:none}
+  .contact-heading{font-size:2rem}
+
+  /* MODAL */
+  .modal{flex-direction:column}
+  .modal-info{padding:1rem 1.2rem}
+  .modal-info-top{flex-direction:column;gap:.5rem}
 }
+
+/* ── MOBILE ── */
+@media(max-width:600px){
+  body{cursor:auto}
+  #cur,#cur-r{display:none}
+
+  /* NAV */
+  nav{padding:0 1rem}
+  .theme-toggle{width:28px;height:28px}
+
+  /* INTRO */
+  .intro-inner{padding:2.5rem 1rem 1.5rem}
+  .intro-name{font-size:clamp(2.2rem,12vw,3rem)}
+  .intro-role{font-size:.7rem}
+  .intro-meta{font-size:.6rem}
+
+  /* WORK */
+  .wgrid{grid-template-columns:1fr}
+  .wc{padding-bottom:75vw;border-right:none}
+  .wc:nth-child(3n),.wc:nth-child(2n){border-right:none}
+  .wc:nth-child(5),.wc:nth-child(6){border-bottom:1px solid var(--rule)}
+  .wc:nth-child(6){border-bottom:none}
+  .filters{overflow-x:auto;padding-bottom:.25rem}
+  .fb{white-space:nowrap;font-size:.65rem;padding:.45rem .8rem}
+
+  /* TITLES */
+  .title-card{flex:0 0 100%;height:120px;border-right:none;border-top:1px solid var(--rule)}
+  .title-card:nth-child(2n){border-right:none}
+
+  /* EXPERIENCE */
+  .exp-tabs{padding:0 1rem}
+  .erow-l,.erow-r{padding:1rem}
+  .erole{font-size:.95rem}
+  .ebody{font-size:.75rem}
+
+  /* SKILLS */
+  .skills-grid{grid-template-columns:1fr}
+  .skill-col{border-right:none;padding:1.2rem 1rem}
+  .skill-col:nth-child(3){border-right:none}
+
+  /* ABOUT */
+  .about-inner{padding:2rem 1rem;gap:1.5rem}
+  .about-photo-col{flex-direction:column;text-align:center;align-items:center}
+  .about-photo{width:100px;height:100px;margin-bottom:.5rem}
+  .about-p{font-size:.82rem}
+  .about-actions{flex-direction:column;gap:.6rem}
+  .about-btn-solid,.about-btn-outline{text-align:center;width:100%}
+
+  /* CONTACT */
+  .contact-left,.contact-right{padding:1.5rem 1rem}
+  .contact-heading{font-size:1.6rem}
+  .contact-email{font-size:1rem}
+  .contact-details{font-size:.72rem}
+  .cfield input,.cfield textarea{font-size:.8rem;padding:.55rem .75rem}
+
+  /* FOOTER */
+  footer{padding:1rem;flex-direction:column;gap:.4rem;text-align:center}
+
+  /* MODAL */
+  .modal{width:100vw;max-height:100vh;border-radius:0}
+  .modal-media{aspect-ratio:4/3}
+  .modal-info{padding:.85rem 1rem}
+  .modal-project-title{font-size:1rem}
+  .modal-desc{font-size:.75rem}
+}
+
+/* ── PROJECT MODAL ── */
+
+.modal-caption-bar{
+  padding:.4rem 1.2rem;
+  background:rgba(0,0,0,0.3);
+  min-height:28px;
+  display:flex;align-items:center;
+}
+#modal-caption{
+  font-family:var(--mono);font-size:.6rem;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:.06em;
+}
+
+.modal-backdrop {
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(10,8,6,0.92);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.modal-backdrop.open {
+  opacity:1;pointer-events:all;
+}
+.modal {
+  position:relative;
+  width:95vw;max-width:1200px;
+  max-height:95vh;
+  background:var(--bg2);
+  border:1px solid var(--rule);
+  border-radius:8px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transform:translateY(20px);
+  transition:transform .3s ease;
+}
+.modal-backdrop.open .modal {
+  transform:translateY(0);
+}
+.modal-close {
+  position:absolute;top:1rem;right:1rem;z-index:10;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--rule);
+  color:var(--mid);font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;transition:all .2s;
+}
+.modal-close:hover { border-color:var(--accent);color:var(--accent); }
+
+/* Media viewer */
+.modal-media {
+  position:relative;
+  width:100%;background:#000;
+  aspect-ratio:16/9;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.modal-media img {
+  width:100%;height:100%;object-fit:contain;
+}
+.modal-media video {
+  width:100%;height:100%;object-fit:contain;
+}
+.modal-media iframe {
+  width:100%;height:100%;border:none;
+}
+.media-placeholder {
+  font-size:4rem;color:var(--faint);
+}
+
+/* Navigation arrows */
+.modal-arrow {
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(10,8,6,0.7);border:1px solid var(--rule);
+  color:var(--fg, #e8ddd0);font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;transition:all .2s;z-index:5;
+}
+.modal-arrow:hover { background:var(--accent);border-color:var(--accent); }
+.modal-arrow.prev { left:.75rem; }
+.modal-arrow.next { right:.75rem; }
+.modal-arrow.hidden { opacity:0;pointer-events:none; }
+
+/* Media dots */
+.modal-dots {
+  position:absolute;bottom:.75rem;left:50%;transform:translateX(-50%);
+  display:flex;gap:.4rem;
+}
+.modal-dot {
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,0.3);
+  transition:background .2s;cursor:none;
+}
+.modal-dot.active { background:var(--accent); }
+
+/* Media counter */
+.modal-counter {
+  position:absolute;top:.75rem;left:.75rem;
+  font-family:var(--mono);font-size:.6rem;
+  color:rgba(255,255,255,0.5);letter-spacing:.08em;
+  background:rgba(0,0,0,0.4);padding:.2rem .5rem;border-radius:3px;
+}
+
+/* Info panel */
+.modal-info {
+  padding:1.5rem 2rem;
+  overflow-y:auto;
+  flex:1;
+}
+.modal-info-top {
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:1rem;margin-bottom:.75rem;
+}
+.modal-project-cat {
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;
+}
+.modal-project-title {
+  font-family:var(--sans);font-size:1.2rem;font-weight:700;
+  color:var(--ink);line-height:1.2;
+}
+.modal-tags { display:flex;flex-wrap:wrap;gap:.35rem; }
+.modal-tag {
+  font-family:var(--mono);font-size:.58rem;
+  padding:.18rem .5rem;border:1px solid var(--rule);
+  color:var(--mid);border-radius:3px;
+}
+.modal-desc {
+  font-size:.82rem;line-height:1.8;color:var(--mid);
+  margin-top:.75rem;
+}
+
+/* Make work cards clickable */
+.wc { cursor:none; }
+.wc:hover .wthumb { transform:scale(1.04); }
 </style>
 </head>
 <body>
@@ -535,10 +770,10 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
   <div class="intro-inner reveal">
     <div>
       <h1 class="intro-name">Maahi<br/><em>Likhari</em></h1>
-      <div class="intro-role">UI Technical Artist — Shaders &amp; Real-time Materials</div>
+      <div class="intro-role">UI Technical Artist, Shaders &amp; Real-time Materials</div>
     </div>
     <div class="intro-meta">
-      <a href="https://linkedin.com" target="_blank">LinkedIn</a> ·
+      <a href="https://www.linkedin.com/in/maahilikhari/" target="_blank">LinkedIn</a> ·
       <a href="https://artstation.com" target="_blank">ArtStation</a> ·
       <a href="mailto:maahisingh40@gmail.com">maahisingh40@gmail.com</a>
     </div>
@@ -548,7 +783,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 <!-- WORK -->
 <section id="work">
   <div class="sec-bar reveal">
-    <span class="sec-label">Work</span>
+    <span class="sec-label" style="display:flex;align-items:center;gap:.5rem">Work <span style="color:var(--accent);font-size:.9rem;font-weight:300;line-height:1">/</span><span style="font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:0;text-transform:none;color:var(--mid)">Personal Projects</span></span>
     <div class="filters">
       <button class="fb on" data-f="all">All</button>
       <button class="fb" data-f="shaders">Shaders</button>
@@ -557,12 +792,12 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
     </div>
   </div>
   <div class="wgrid">
-    <div class="wc reveal" data-cat="shaders"><div class="wthumb t1">🌅</div><div class="woverlay"><div class="wcat">Shader · HLSL / UE5</div><div class="wtitle">Dynamic Material Systems</div><div class="wsub">Parameter Collections &amp; Blueprint control</div></div></div>
-    <div class="wc reveal" data-cat="ui"><div class="wthumb t2">🎮</div><div class="woverlay"><div class="wcat">UI · Diegetic Materials</div><div class="wtitle">UI Shader Toolkit</div><div class="wsub">Stylized &amp; animated UI materials</div></div></div>
-    <div class="wc reveal" data-cat="shaders"><div class="wthumb t3">🏔️</div><div class="woverlay"><div class="wcat">Shader · PBR</div><div class="wtitle">Construction Viz Materials</div><div class="wsub">Real-time surface &amp; lighting</div></div></div>
-    <div class="wc reveal" data-cat="tools"><div class="wthumb t4">🛠️</div><div class="woverlay"><div class="wcat">Tool · Python / UE5</div><div class="wtitle">Procedural Function Library</div><div class="wsub">Reusable shader building blocks</div></div></div>
-    <div class="wc reveal" data-cat="ui"><div class="wthumb t5">🌿</div><div class="woverlay"><div class="wcat">UI · Master Material</div><div class="wtitle">Master Material System</div><div class="wsub">Consistent UI across multiple projects</div></div></div>
-    <div class="wc reveal" data-cat="shaders"><div class="wthumb t6">🌊</div><div class="woverlay"><div class="wcat">Shader · Animated</div><div class="wtitle">Material Transition System</div><div class="wsub">Progressive build assembly viz</div></div></div>
+    <div class="wc reveal" data-cat="shaders"><div class="wthumb t1">🌅</div><div class="woverlay"><div class="wcat">Personal · Shader / HLSL</div><div class="wtitle">Dynamic Material Systems</div><div class="wsub">Parameter Collections &amp; Blueprint control</div></div></div>
+    <div class="wc reveal" data-cat="ui"><div class="wthumb t2">🎮</div><div class="woverlay"><div class="wcat">Personal · UI Materials</div><div class="wtitle">UI Shader Toolkit</div><div class="wsub">Stylized &amp; animated UI materials</div></div></div>
+    <div class="wc reveal" data-cat="shaders"><div class="wthumb t3">🏔️</div><div class="woverlay"><div class="wcat">Personal · Shader / PBR</div><div class="wtitle">Construction Viz Materials</div><div class="wsub">Real-time surface &amp; lighting</div></div></div>
+    <div class="wc reveal" data-cat="tools"><div class="wthumb t4">🛠️</div><div class="woverlay"><div class="wcat">Personal · Tool / Python</div><div class="wtitle">Procedural Function Library</div><div class="wsub">Reusable shader building blocks</div></div></div>
+    <div class="wc reveal" data-cat="ui"><div class="wthumb t5">🌿</div><div class="woverlay"><div class="wcat">Personal · UI Material</div><div class="wtitle">Master Material System</div><div class="wsub">Consistent UI across multiple projects</div></div></div>
+    <div class="wc reveal" data-cat="shaders"><div class="wthumb t6">🌊</div><div class="woverlay"><div class="wcat">Personal · Shader / Animated</div><div class="wtitle">Material Transition System</div><div class="wsub">Progressive build assembly viz</div></div></div>
   </div>
 </section>
 
@@ -625,7 +860,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
   <div class="erows on" id="tab-pro">
     <div class="erow reveal">
       <div class="erow-l">
-        <div class="edate">Sep 2022 – Present</div>
+        <div class="edate">Sep 2022 to Present</div>
         <div class="eco">Sprung Studios</div>
       </div>
       <div class="erow-r">
@@ -643,7 +878,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
     </div>
     <div class="erow reveal">
       <div class="erow-l">
-        <div class="edate">Jul 2021 – Feb 2022</div>
+        <div class="edate">Jul 2021 to Feb 2022</div>
         <div class="eco">CAD Makers</div>
       </div>
       <div class="erow-r">
@@ -662,7 +897,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
   <div class="erows" id="tab-edu">
     <div class="erow reveal">
       <div class="erow-l">
-        <div class="edate">Sep 2020 – Aug 2022</div>
+        <div class="edate">Sep 2020 to Aug 2022</div>
         <div class="eco">Kwantlen Polytechnic University</div>
       </div>
       <div class="erow-r">
@@ -672,7 +907,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
     </div>
     <div class="erow reveal">
       <div class="erow-l">
-        <div class="edate">Sep 2019 – Aug 2020</div>
+        <div class="edate">Sep 2019 to Aug 2020</div>
         <div class="eco">Vancouver Institute of Media Arts</div>
       </div>
       <div class="erow-r">
@@ -742,8 +977,8 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
       <div class="about-card-status"><span class="about-dot"></span>Sprung Studios &middot; Open to work</div>
     </div>
     <div class="about-text">
-      <p class="about-p">Technical Artist with over three years of experience building and optimizing real-time visuals for AAA games. I focus on <strong>UI technical art, shader development, and material systems</strong> &mdash; creating the tools and pipelines that let art teams move faster without sacrificing quality.</p>
-      <p class="about-p">I care about the craft. Whether that&rsquo;s a clean master material, a well-documented shader breakdown, or a performance fix nobody else noticed &mdash; I like finding elegant solutions to messy problems. I work best in collaborative teams where art and engineering talk to each other.</p>
+      <p class="about-p">Technical Artist with over three years of experience building and optimizing real-time visuals for AAA games. I focus on <strong>UI technical art, shader development, and material systems.</strong> I create the tools and pipelines that let art teams move faster without sacrificing quality.</p>
+      <p class="about-p">I care about the craft. Whether that&rsquo;s a clean master material, a well-documented shader breakdown, or a performance fix nobody else noticed. I like finding elegant solutions to messy problems. I work best in collaborative teams where art and engineering talk to each other.</p>
       <p class="about-p">Currently open to full-time and contract opportunities. Feel free to reach out.</p>
       <div class="about-actions">
         <a href="#" class="about-btn-solid">Download CV</a>
@@ -759,9 +994,9 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
   <div class="contact-inner">
     <div class="contact-left reveal">
       <a href="mailto:maahisingh40@gmail.com" class="contact-email">maahisingh40@gmail.com</a>
-      <p class="contact-note">Open to new projects, collaborations, and full-time roles. Feel free to reach out — I'm friendly, I promise.</p>
+      <p class="contact-note">Open to new projects, collaborations, and full-time roles. Feel free to reach out. I'm friendly, I promise.</p>
       <div class="socials">
-        <a href="https://linkedin.com" class="soc" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/maahilikhari/" class="soc" target="_blank">LinkedIn</a>
         <a href="https://artstation.com" class="soc" target="_blank">ArtStation</a>
       </div>
     </div>
@@ -813,6 +1048,158 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+
+// ── PROJECT DATA — loaded from media.json ──
+let projectData = [];
+
+async function loadProjects() {
+  try {
+    const res = await fetch('media.json');
+    const json = await res.json();
+    projectData = json.projects;
+    // Update card thumbs if thumb is specified
+    projectData.forEach((p, i) => {
+      if (p.thumb) {
+        const card = document.querySelectorAll('.wc')[i];
+        if (card) {
+          const thumb = card.querySelector('.wthumb');
+          if (thumb) {
+            thumb.innerHTML = `<img src="${p.thumb}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="${p.title}"/>`;
+          }
+        }
+      }
+    });
+  } catch(e) {
+    console.log('media.json not found, using defaults');
+  }
+}
+
+// ── MODAL LOGIC ──
+let currentProject = null;
+let currentMediaIndex = 0;
+const nav = document.querySelector('nav');
+
+function openModal(index) {
+  const p = projectData[index];
+  if (!p) return;
+  currentProject = p;
+  currentMediaIndex = 0;
+
+  document.getElementById('modal-cat').textContent = p.cat;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-desc').textContent = p.desc;
+
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+
+  renderMedia();
+  const scrollY = window.scrollY;
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.documentElement.classList.add('modal-open');
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.paddingRight = scrollbarWidth + 'px';
+  nav.style.paddingRight = scrollbarWidth + 'px';
+  document.getElementById('modal-backdrop').classList.add('open');
+}
+
+function closeModal() {
+  const scrollY = parseInt(document.body.style.top || '0') * -1;
+  document.getElementById('modal-backdrop').classList.remove('open');
+  document.documentElement.classList.remove('modal-open');
+  document.body.style.top = '';
+  document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
+  nav.style.paddingRight = '';
+  document.documentElement.style.scrollBehavior = 'auto';
+  window.scrollTo(0, scrollY);
+  document.documentElement.style.scrollBehavior = '';
+  document.querySelectorAll('#modal-media video').forEach(v => v.pause());
+}
+
+function renderMedia() {
+  const p = currentProject;
+  const mediaEl = document.getElementById('modal-media');
+  const placeholder = document.getElementById('media-placeholder');
+  const counter = document.getElementById('modal-counter');
+  const dots = document.getElementById('modal-dots');
+  const prev = document.getElementById('modal-prev');
+  const next = document.getElementById('modal-next');
+  const caption = document.getElementById('modal-caption');
+
+  // Remove old media
+  mediaEl.querySelectorAll('img, video, iframe').forEach(el => el.remove());
+
+  const item = p.media[currentMediaIndex];
+  placeholder.style.display = 'none';
+
+  if (item.type === 'placeholder') {
+    placeholder.textContent = item.icon;
+    placeholder.style.display = 'flex';
+  } else if (item.type === 'image') {
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = p.title;
+    mediaEl.insertBefore(img, placeholder);
+  } else if (item.type === 'video') {
+    const vid = document.createElement('video');
+    vid.src = item.src;
+    vid.controls = true;
+    vid.autoplay = false;
+    mediaEl.insertBefore(vid, placeholder);
+  } else if (item.type === 'youtube') {
+    const frame = document.createElement('iframe');
+    frame.src = item.src + '?rel=0';
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    frame.allowFullscreen = true;
+    mediaEl.insertBefore(frame, placeholder);
+  }
+
+  // Caption
+  if (caption) caption.textContent = item.caption || '';
+
+  // Counter
+  const total = p.media.length;
+  counter.textContent = total > 1 ? `${currentMediaIndex + 1} / ${total}` : '';
+
+  // Arrows
+  prev.classList.toggle('hidden', currentMediaIndex === 0 || total === 1);
+  next.classList.toggle('hidden', currentMediaIndex === total - 1 || total === 1);
+
+  // Dots — show up to 10
+  dots.innerHTML = total > 1
+    ? p.media.map((_, i) => `<div class="modal-dot ${i === currentMediaIndex ? 'active' : ''}" onclick="goToMedia(${i})"></div>`).join('')
+    : '';
+}
+
+function goToMedia(index) {
+  currentMediaIndex = index;
+  renderMedia();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+loadProjects();
+document.getElementById('modal-prev').addEventListener('click', () => {
+  if (currentMediaIndex > 0) { currentMediaIndex--; renderMedia(); }
+});
+document.getElementById('modal-next').addEventListener('click', () => {
+  if (currentMediaIndex < currentProject.media.length - 1) { currentMediaIndex++; renderMedia(); }
+});
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-backdrop').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('modal-backdrop')) closeModal();
+});
+document.querySelectorAll('.wc').forEach((card, i) => {
+  card.addEventListener('click', () => openModal(i));
+});
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('modal-backdrop')?.classList.contains('open')) return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft' && currentMediaIndex > 0) { currentMediaIndex--; renderMedia(); }
+  if (e.key === 'ArrowRight' && currentProject && currentMediaIndex < currentProject.media.length - 1) { currentMediaIndex++; renderMedia(); }
+});
+
 // THEME TOGGLE
 function toggleTheme() {
   const root = document.documentElement;
@@ -826,5 +1213,30 @@ function toggleTheme() {
   if(saved === 'light') document.documentElement.setAttribute('data-theme','light');
 })();
 </script>
+
+<!-- PROJECT MODAL -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="modal-media" id="modal-media">
+      <div class="media-placeholder" id="media-placeholder">🎨</div>
+      <button class="modal-arrow prev hidden" id="modal-prev">&#8592;</button>
+      <button class="modal-arrow next hidden" id="modal-next">&#8594;</button>
+      <div class="modal-dots" id="modal-dots"></div>
+      <div class="modal-counter" id="modal-counter"></div>
+    </div>
+    <div class="modal-caption-bar" id="modal-caption-bar"><span id="modal-caption"></span></div>
+    <div class="modal-info">
+      <div class="modal-info-top">
+        <div>
+          <div class="modal-project-cat" id="modal-cat"></div>
+          <div class="modal-project-title" id="modal-title"></div>
+        </div>
+        <div class="modal-tags" id="modal-tags"></div>
+      </div>
+      <div class="modal-desc" id="modal-desc"></div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
