@@ -605,6 +605,295 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 
 /* ── PROJECT MODAL ── */
 
+/* ── PROJECT MODAL ── */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(6,5,4,0.93);
+  backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+  padding:1.5rem;
+}
+.modal-backdrop.open{opacity:1;pointer-events:all}
+.modal{
+  position:relative;
+  width:100%;max-width:1300px;
+  height:88vh;
+  background:var(--bg2);
+  border:1px solid var(--rule);
+  border-radius:10px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 380px;
+  transform:translateY(24px) scale(0.98);
+  transition:transform .35s cubic-bezier(.25,.46,.45,.94);
+}
+.modal-backdrop.open .modal{transform:translateY(0) scale(1)}
+
+/* ── LEFT: MEDIA PANEL ── */
+.modal-left{
+  display:flex;flex-direction:column;
+  border-right:1px solid var(--rule);
+  overflow:hidden;
+  background:#000;
+}
+.modal-media{
+  position:relative;flex:1;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:#0a0806;
+  min-height:0;
+}
+.modal-media img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.modal-media video{max-width:100%;max-height:100%;display:block}
+.modal-media iframe{width:100%;height:100%;border:none}
+.media-placeholder{
+  font-size:5rem;color:var(--faint);
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;
+}
+
+/* Arrows */
+.modal-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(10,8,6,0.75);border:1px solid rgba(255,255,255,0.12);
+  color:#fff;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;transition:all .2s;z-index:5;
+}
+.modal-arrow:hover{background:var(--accent);border-color:var(--accent)}
+.modal-arrow.prev{left:1rem}
+.modal-arrow.next{right:1rem}
+.modal-arrow.hidden{opacity:0;pointer-events:none}
+
+/* Counter */
+.modal-counter{
+  position:absolute;bottom:1rem;right:1rem;
+  font-family:var(--mono);font-size:.58rem;
+  color:rgba(255,255,255,0.45);letter-spacing:.08em;
+  background:rgba(0,0,0,0.5);padding:.25rem .6rem;border-radius:3px;
+}
+
+/* Thumbnail strip */
+.modal-thumbstrip{
+  display:flex;gap:2px;padding:6px;
+  background:var(--bg);border-top:1px solid var(--rule);
+  overflow-x:auto;flex-shrink:0;min-height:64px;align-items:center;
+}
+.modal-thumbstrip::-webkit-scrollbar{height:3px}
+.modal-thumbstrip::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+.modal-thumb{
+  width:80px;height:52px;flex-shrink:0;
+  border-radius:3px;overflow:hidden;cursor:none;
+  border:2px solid transparent;
+  transition:border-color .15s,opacity .15s;
+  background:var(--bg2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.modal-thumb img{width:100%;height:100%;object-fit:cover}
+.modal-thumb.active{border-color:var(--accent)}
+.modal-thumb:not(.active){opacity:0.55}
+.modal-thumb:hover{opacity:1}
+
+/* ── RIGHT: INFO PANEL ── */
+.modal-right{
+  display:flex;flex-direction:column;
+  overflow:hidden;position:relative;
+}
+.modal-close{
+  position:absolute;top:.85rem;right:.85rem;z-index:10;
+  width:32px;height:32px;border-radius:50%;
+  background:var(--bg3);border:1px solid var(--rule);
+  color:var(--mid);font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;transition:all .2s;
+}
+.modal-close:hover{border-color:var(--accent);color:var(--accent)}
+.modal-header{
+  padding:1.4rem 1.4rem 1rem;
+  border-bottom:1px solid var(--rule);
+  flex-shrink:0;
+}
+.modal-project-cat{
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;
+}
+.modal-project-title{
+  font-size:1.15rem;font-weight:700;
+  color:var(--ink);line-height:1.2;margin-bottom:.7rem;
+}
+.modal-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.modal-tag{
+  font-family:var(--mono);font-size:.55rem;
+  padding:.15rem .45rem;border:1px solid var(--rule);
+  color:var(--mid);border-radius:3px;background:var(--bg3);
+}
+
+/* Scrollable content area */
+.modal-body{
+  flex:1;overflow-y:auto;padding:1.2rem 1.4rem;
+  display:flex;flex-direction:column;gap:1.2rem;
+}
+.modal-body::-webkit-scrollbar{width:3px}
+.modal-body::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+.modal-section-label{
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mid);
+  margin-bottom:.5rem;padding-bottom:.4rem;
+  border-bottom:1px solid var(--rule);
+}
+.modal-desc{
+  font-size:.8rem;line-height:1.85;color:var(--mid);
+}
+.modal-workflow{
+  font-size:.8rem;line-height:1.85;color:var(--mid);
+}
+.modal-caption-cur{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--faint);font-style:italic;padding:.5rem .8rem;
+  background:var(--bg3);border-radius:4px;border-left:2px solid var(--accent);
+}
+
+/* Responsive modal */
+@media(max-width:800px){
+  .modal{grid-template-columns:1fr;grid-template-rows:50vh 1fr;height:92vh}
+  .modal-left{border-right:none;border-bottom:1px solid var(--rule)}
+  .modal-thumbstrip{min-height:52px}
+  .modal-thumb{width:60px;height:40px}
+}
+@media(max-width:500px){
+  .modal-backdrop{padding:0}
+  .modal{border-radius:0;height:100vh}
+  .modal-header{padding:1rem}
+  .modal-body{padding:1rem}
+}
+
+/* ── TABLET ── */
+@media(max-width:900px){
+  /* NAV */
+  nav{padding:0 1.5rem;height:48px}
+  .nav-r a{display:none}
+  .nav-name{font-size:.85rem}
+
+  /* INTRO */
+  .intro-inner{grid-template-columns:1fr;gap:1rem;padding:3rem 1.5rem 2rem}
+  .intro-meta{text-align:left}
+  .intro-name{font-size:clamp(2rem,8vw,3.5rem)}
+
+  /* WORK */
+  .sec-bar{padding:.75rem 1.5rem}
+  .wgrid{grid-template-columns:repeat(2,1fr)}
+  .wc:nth-child(3n){border-right:1px solid var(--rule)}
+  .wc:nth-child(2n){border-right:none}
+  .wc:nth-child(5),.wc:nth-child(6){border-bottom:none}
+  .wc:nth-child(4){border-bottom:1px solid var(--rule)}
+  .wc{padding-bottom:50vw}
+
+  /* TITLES */
+  .titles-grid{flex-wrap:wrap}
+  .title-card{flex:0 0 50%;height:140px}
+  .title-card:nth-child(2n){border-right:none}
+  .title-card:nth-child(3),.title-card:nth-child(4){border-top:1px solid var(--rule)}
+
+  /* EXPERIENCE */
+  .erow{grid-template-columns:1fr}
+  .erow-l{border-right:none;border-bottom:1px solid var(--rule);padding:1.2rem 1.5rem}
+  .erow-r{padding:1.2rem 1.5rem}
+
+  /* SKILLS */
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .skill-col:nth-child(2){border-right:none}
+  .skill-col:nth-child(3){border-right:1px solid var(--rule)}
+  .skill-col{padding:1.5rem}
+
+  /* ABOUT */
+  .about-inner{grid-template-columns:1fr;padding:3rem 1.5rem;gap:2rem}
+  .about-photo-col{flex-direction:row;text-align:left;gap:1.2rem;align-items:center}
+  .about-photo{width:80px;height:80px;flex-shrink:0;margin-bottom:0}
+  .about-card-name{font-size:.88rem}
+
+  /* CONTACT */
+  .contact-inner{grid-template-columns:1fr}
+  .contact-left{border-right:none;border-bottom:1px solid var(--rule);padding:2rem 1.5rem}
+  .contact-right{padding:2rem 1.5rem}
+  .crow{grid-template-columns:1fr}
+  .contact-heading{font-size:2rem}
+
+  /* MODAL */
+  .modal{flex-direction:column}
+  .modal-info{padding:1rem 1.2rem}
+  .modal-info-top{flex-direction:column;gap:.5rem}
+}
+
+/* ── MOBILE ── */
+@media(max-width:600px){
+  body{cursor:auto}
+  #cur,#cur-r{display:none}
+
+  /* NAV */
+  nav{padding:0 1rem}
+  .theme-toggle{width:28px;height:28px}
+
+  /* INTRO */
+  .intro-inner{padding:2.5rem 1rem 1.5rem}
+  .intro-name{font-size:clamp(2.2rem,12vw,3rem)}
+  .intro-role{font-size:.7rem}
+  .intro-meta{font-size:.6rem}
+
+  /* WORK */
+  .wgrid{grid-template-columns:1fr}
+  .wc{padding-bottom:75vw;border-right:none}
+  .wc:nth-child(3n),.wc:nth-child(2n){border-right:none}
+  .wc:nth-child(5),.wc:nth-child(6){border-bottom:1px solid var(--rule)}
+  .wc:nth-child(6){border-bottom:none}
+  .filters{overflow-x:auto;padding-bottom:.25rem}
+  .fb{white-space:nowrap;font-size:.65rem;padding:.45rem .8rem}
+
+  /* TITLES */
+  .title-card{flex:0 0 100%;height:120px;border-right:none;border-top:1px solid var(--rule)}
+  .title-card:nth-child(2n){border-right:none}
+
+  /* EXPERIENCE */
+  .exp-tabs{padding:0 1rem}
+  .erow-l,.erow-r{padding:1rem}
+  .erole{font-size:.95rem}
+  .ebody{font-size:.75rem}
+
+  /* SKILLS */
+  .skills-grid{grid-template-columns:1fr}
+  .skill-col{border-right:none;padding:1.2rem 1rem}
+  .skill-col:nth-child(3){border-right:none}
+
+  /* ABOUT */
+  .about-inner{padding:2rem 1rem;gap:1.5rem}
+  .about-photo-col{flex-direction:column;text-align:center;align-items:center}
+  .about-photo{width:100px;height:100px;margin-bottom:.5rem}
+  .about-p{font-size:.82rem}
+  .about-actions{flex-direction:column;gap:.6rem}
+  .about-btn-solid,.about-btn-outline{text-align:center;width:100%}
+
+  /* CONTACT */
+  .contact-left,.contact-right{padding:1.5rem 1rem}
+  .contact-heading{font-size:1.6rem}
+  .contact-email{font-size:1rem}
+  .contact-details{font-size:.72rem}
+  .cfield input,.cfield textarea{font-size:.8rem;padding:.55rem .75rem}
+
+  /* FOOTER */
+  footer{padding:1rem;flex-direction:column;gap:.4rem;text-align:center}
+
+  /* MODAL */
+  .modal{width:100vw;max-height:100vh;border-radius:0}
+  .modal-media{aspect-ratio:4/3}
+  .modal-info{padding:.85rem 1rem}
+  .modal-project-title{font-size:1rem}
+  .modal-desc{font-size:.75rem}
+}
+
+/* ── PROJECT MODAL ── */
+
 .modal-caption-bar{
   padding:.4rem 1.2rem;
   background:rgba(0,0,0,0.3);
@@ -1087,7 +1376,7 @@ function openModal(index) {
 
   document.getElementById('modal-cat').textContent = p.cat;
   document.getElementById('modal-title').textContent = p.title;
-  document.getElementById('modal-desc').textContent = p.desc;
+  document.getElementById('modal-desc').textContent = p.desc || '';
 
   const tagsEl = document.getElementById('modal-tags');
   tagsEl.innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
@@ -1121,19 +1410,23 @@ function renderMedia() {
   const mediaEl = document.getElementById('modal-media');
   const placeholder = document.getElementById('media-placeholder');
   const counter = document.getElementById('modal-counter');
-  const dots = document.getElementById('modal-dots');
   const prev = document.getElementById('modal-prev');
   const next = document.getElementById('modal-next');
-  const caption = document.getElementById('modal-caption');
+  const captionEl = document.getElementById('modal-caption');
+  const captionWrap = document.getElementById('modal-caption-wrap');
+  const thumbstrip = document.getElementById('modal-thumbstrip');
+  const workflowEl = document.getElementById('modal-workflow');
+  const workflowWrap = document.getElementById('modal-workflow-wrap');
 
-  // Remove old media
+  // Remove old media elements
   mediaEl.querySelectorAll('img, video, iframe').forEach(el => el.remove());
 
   const item = p.media[currentMediaIndex];
+  const total = p.media.length;
   placeholder.style.display = 'none';
 
   if (item.type === 'placeholder') {
-    placeholder.textContent = item.icon;
+    placeholder.textContent = item.icon || '🎨';
     placeholder.style.display = 'flex';
   } else if (item.type === 'image') {
     const img = document.createElement('img');
@@ -1144,31 +1437,46 @@ function renderMedia() {
     const vid = document.createElement('video');
     vid.src = item.src;
     vid.controls = true;
-    vid.autoplay = false;
+    vid.style.width = '100%';
+    vid.style.height = '100%';
     mediaEl.insertBefore(vid, placeholder);
   } else if (item.type === 'youtube') {
     const frame = document.createElement('iframe');
-    frame.src = item.src + '?rel=0';
+    frame.src = item.src + (item.src.includes('?') ? '&' : '?') + 'rel=0';
     frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     frame.allowFullscreen = true;
     mediaEl.insertBefore(frame, placeholder);
   }
 
   // Caption
-  if (caption) caption.textContent = item.caption || '';
+  const cap = item.caption || '';
+  captionEl.textContent = cap;
+  captionWrap.style.display = cap ? 'block' : 'none';
 
   // Counter
-  const total = p.media.length;
   counter.textContent = total > 1 ? `${currentMediaIndex + 1} / ${total}` : '';
 
   // Arrows
   prev.classList.toggle('hidden', currentMediaIndex === 0 || total === 1);
   next.classList.toggle('hidden', currentMediaIndex === total - 1 || total === 1);
 
-  // Dots — show up to 10
-  dots.innerHTML = total > 1
-    ? p.media.map((_, i) => `<div class="modal-dot ${i === currentMediaIndex ? 'active' : ''}" onclick="goToMedia(${i})"></div>`).join('')
-    : '';
+  // Workflow
+  if (p.workflow) {
+    workflowEl.textContent = p.workflow;
+    workflowWrap.style.display = 'block';
+  } else {
+    workflowWrap.style.display = 'none';
+  }
+
+  // Thumbnail strip
+  thumbstrip.innerHTML = total > 1 ? p.media.map((item, i) => {
+    let inner = '';
+    if (item.type === 'image') inner = `<img src="${item.src}" alt=""/>`;
+    else if (item.type === 'video') inner = `<span style="font-size:1.4rem">▶</span>`;
+    else if (item.type === 'youtube') inner = `<span style="font-size:1.4rem">▶</span>`;
+    else inner = `<span>${item.icon || '🎨'}</span>`;
+    return `<div class="modal-thumb ${i === currentMediaIndex ? 'active' : ''}" onclick="goToMedia(${i})">${inner}</div>`;
+  }).join('') : '';
 }
 
 function goToMedia(index) {
@@ -1217,25 +1525,41 @@ function toggleTheme() {
 <!-- PROJECT MODAL -->
 <div class="modal-backdrop" id="modal-backdrop">
   <div class="modal" id="modal">
-    <button class="modal-close" id="modal-close">✕</button>
-    <div class="modal-media" id="modal-media">
-      <div class="media-placeholder" id="media-placeholder">🎨</div>
-      <button class="modal-arrow prev hidden" id="modal-prev">&#8592;</button>
-      <button class="modal-arrow next hidden" id="modal-next">&#8594;</button>
-      <div class="modal-dots" id="modal-dots"></div>
-      <div class="modal-counter" id="modal-counter"></div>
+
+    <!-- LEFT: media viewer -->
+    <div class="modal-left">
+      <div class="modal-media" id="modal-media">
+        <div class="media-placeholder" id="media-placeholder">🎨</div>
+        <button class="modal-arrow prev hidden" id="modal-prev">&#8592;</button>
+        <button class="modal-arrow next hidden" id="modal-next">&#8594;</button>
+        <div class="modal-counter" id="modal-counter"></div>
+      </div>
+      <div class="modal-thumbstrip" id="modal-thumbstrip"></div>
     </div>
-    <div class="modal-caption-bar" id="modal-caption-bar"><span id="modal-caption"></span></div>
-    <div class="modal-info">
-      <div class="modal-info-top">
-        <div>
-          <div class="modal-project-cat" id="modal-cat"></div>
-          <div class="modal-project-title" id="modal-title"></div>
-        </div>
+
+    <!-- RIGHT: info panel -->
+    <div class="modal-right">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-header">
+        <div class="modal-project-cat" id="modal-cat"></div>
+        <div class="modal-project-title" id="modal-title"></div>
         <div class="modal-tags" id="modal-tags"></div>
       </div>
-      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-body">
+        <div id="modal-caption-wrap" style="display:none">
+          <div class="modal-caption-cur" id="modal-caption"></div>
+        </div>
+        <div>
+          <div class="modal-section-label">About</div>
+          <div class="modal-desc" id="modal-desc"></div>
+        </div>
+        <div id="modal-workflow-wrap" style="display:none">
+          <div class="modal-section-label">Workflow</div>
+          <div class="modal-workflow" id="modal-workflow"></div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 </body>
