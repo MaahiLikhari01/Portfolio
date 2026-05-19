@@ -5,65 +5,71 @@
       "title": "Dynamic Material Systems",
       "cat": "Personal · Shader / HLSL",
       "desc": "A system of dynamic materials built using Material Parameter Collections and Blueprints to animate and control UI visuals in real time. Designed for flexibility across multiple projects with minimal overhead.",
+      "workflow": "Started by identifying common UI material patterns across the project. Built a master parameter collection to drive colour, opacity, and animation globally. Created individual material functions for each effect type, then wired them into a single master material with switch parameters for artists to toggle features without touching nodes.",
       "tags": ["HLSL", "UE5", "Blueprints", "Material Parameter Collections"],
-      "thumb": "",
+      "thumb": "Images/project-1/maahi-likhari-landscape.jpg",
       "media": [
-        { "type": "image", "src": "Images/project-1/maahi-likhari-landscape.jpg", "caption": "Your caption here" }
+        { "type": "image", "src": "Images/project-1/maahi-likhari-landscape.jpg", "caption": "Overview of the material graph" }
       ]
     },
     {
       "id": 1,
       "title": "UI Shader Toolkit",
       "cat": "Personal · UI Materials",
-      "desc": "A collection of stylized and animated UI material functions built for diegetic and screen-space UI elements. Designed to be reusable and easily configurable by artists without shader knowledge.",
+      "desc": "A collection of stylized and animated UI material functions built for diegetic and screen-space UI elements.",
+      "workflow": "Describe your workflow here — what problem did you solve, how did you approach it, what tools did you use, what did you learn?",
       "tags": ["HLSL", "UI Tech Art", "UE5", "Material Functions"],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🎮", "caption": "Add your screenshots here" }
+        { "type": "placeholder", "icon": "🎮", "caption": "" }
       ]
     },
     {
       "id": 2,
       "title": "Construction Viz Materials",
       "cat": "Personal · Shader / PBR",
-      "desc": "Physically based materials and shaders for real-time architectural visualization. Achieves accurate surface response and lighting realism using custom normal blending and procedural weathering.",
+      "desc": "Physically based materials and shaders for real-time architectural visualization.",
+      "workflow": "Describe your workflow here.",
       "tags": ["PBR", "UE5", "Architectural Viz", "HLSL"],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🏔️", "caption": "Add your screenshots here" }
+        { "type": "placeholder", "icon": "🏔️", "caption": "" }
       ]
     },
     {
       "id": 3,
       "title": "Procedural Function Library",
       "cat": "Personal · Tool / Python",
-      "desc": "A reusable library of procedural material functions enabling stylized and dynamic material creation across multiple projects. Reduces repetitive node work and standardizes common shader patterns.",
+      "desc": "A reusable library of procedural material functions enabling stylized and dynamic material creation across multiple projects.",
+      "workflow": "Describe your workflow here.",
       "tags": ["Python", "UE5", "Material Functions", "Pipeline"],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🛠️", "caption": "Add your screenshots here" }
+        { "type": "placeholder", "icon": "🛠️", "caption": "" }
       ]
     },
     {
       "id": 4,
       "title": "Master Material System",
       "cat": "Personal · UI Material",
-      "desc": "A master material architecture built to maintain visual consistency and reduce redundant shader variations across UI and diegetic elements. One material driving hundreds of instances.",
+      "desc": "A master material architecture built to maintain visual consistency and reduce redundant shader variations.",
+      "workflow": "Describe your workflow here.",
       "tags": ["UE5", "Master Materials", "UI Tech Art", "Optimization"],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🌿", "caption": "Add your screenshots here" }
+        { "type": "placeholder", "icon": "🌿", "caption": "" }
       ]
     },
     {
       "id": 5,
       "title": "Material Transition System",
       "cat": "Personal · Shader / Animated",
-      "desc": "An animated material system to visualize progressive building assembly and material transitions over time. Uses timeline-driven parameter animation with custom blend modes.",
+      "desc": "An animated material system to visualize progressive building assembly and material transitions over time.",
+      "workflow": "Describe your workflow here.",
       "tags": ["HLSL", "Level Sequencer", "UE5", "Animation"],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🌊", "caption": "Add your screenshots here" }
+        { "type": "placeholder", "icon": "🌊", "caption": "" }
       ]
     }
   ]
