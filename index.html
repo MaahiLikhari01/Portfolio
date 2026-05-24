@@ -1727,6 +1727,77 @@ const projectData = [
   { id:11, title:"Ice Surface Shader", cat:"Personal · Shader", desc:"Procedural ice surface material.", workflow:"", tags:["HLSL","UE5"], thumb:"", media:[{type:"placeholder",icon:"❄️",caption:""}]}
 ];
 
+// ── PROJECT DATA — loaded from media.json ──
+let projectData = [];
+const THUMBS = ['t1','t2','t3','t4','t5','t6'];
+
+async function loadProjects() {
+  try {
+    const res = await fetch('media.json');
+    if (!res.ok) throw new Error('media.json not found');
+    const json = await res.json();
+    projectData = json.projects || [];
+    buildGrid();
+    if (json.credits) buildCredits(json.credits);
+  } catch(e) {
+    console.warn('Could not load media.json:', e);
+  }
+}
+
+function buildGrid() {
+  const grid = document.getElementById('work-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  projectData.forEach((p, i) => {
+    const isExtra = i >= 6;
+    const filter = p.filter || 'shaders';
+    const thumbClass = THUMBS[i % THUMBS.length];
+    const thumbContent = p.thumb
+      ? `<img src="${p.thumb}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" alt="${p.title}"/>`
+      : `<span style="font-size:3rem">${p.icon || '🎨'}</span>`;
+    const shortDesc = p.desc ? (p.desc.length > 60 ? p.desc.substring(0,60)+'...' : p.desc) : '';
+    const card = document.createElement('div');
+    card.onclick = () => openModal(i);
+    card.className = `wc reveal${isExtra ? ' wc-extra' : ''}`;
+    card.dataset.cat = filter;
+    card.innerHTML = `
+      <div class="wthumb ${thumbClass}">${thumbContent}</div>
+      <div class="woverlay">
+        <div class="wcat">${p.cat || ''}</div>
+        <div class="wtitle">${p.title || ''}</div>
+        <div class="wsub">${shortDesc}</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  initLoadMore();
+}
+
+function buildCredits(credits) {
+  const grid = document.querySelector('.titles-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  credits.forEach((c, i) => {
+    const thumbClass = THUMBS[i % THUMBS.length];
+    const bgStyle = c.thumb ? `background-image:url('${c.thumb}');background-size:cover;background-position:center;` : '';
+    const card = document.createElement('div');
+    card.className = 'title-card reveal';
+    card.innerHTML = `
+      <div class="title-card-bg ${thumbClass}" style="width:100%;height:100%;position:relative;${bgStyle}">
+        <div style="position:absolute;inset:0;padding:1.4rem 1.6rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(10,8,6,0.92) 0%,transparent 65%)">
+          <div class="title-studio">${c.studio || ''}</div>
+          <div class="title-game">${c.game || ''}</div>
+          <div class="title-role">${c.role || ''}</div>
+          <div class="title-foot">
+            <div class="title-year">${c.year || ''}</div>
+            <div class="title-platforms">${(c.platforms||[]).map(p=>`<span class="platform">${p}</span>`).join('')}</div>
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ── MODAL LOGIC ──
 let curProj = null, curIdx = 0;
 let navEl = null;
 
@@ -1919,7 +1990,7 @@ function updateLoadMore() {
   wrap.style.display = (hidden === 0 && lessBtn.style.display === 'none') ? 'none' : 'flex';
 }
 
-document.addEventListener('DOMContentLoaded', () => { loadProjects(); initLoadMore(); });
+document.addEventListener('DOMContentLoaded', () => { loadProjects(); });
 
 
 // THEME TOGGLE
