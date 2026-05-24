@@ -289,7 +289,7 @@
       "game": "Halo Infinite",
       "studio": "343 Industries · Xbox",
       "role": "Technical Artist",
-      "year": "2023",
+      "year": "2022",
       "platforms": [
         "PC",
         "Xbox"
@@ -297,26 +297,26 @@
       "thumb": "Images/Credits/Halo_Infinite.jpg"
     },
     {
-      "id": "exobourne",
-      "game": "Exobourne",
+      "id": "exoborne",
+      "game": "Exoborne",
       "studio": "Sharkmob",
       "role": "Technical Artist",
-      "year": "2023",
+      "year": "2024",
       "platforms": [
         "PC"
       ],
-      "thumb": ""
+      "thumb": "Images/Credits/Exoborne.jpg"
     },
     {
       "id": "golfclash",
       "game": "Golf Clash",
       "studio": "Playdemic · EA",
       "role": "Technical Artist",
-      "year": "2023",
+      "year": "2024",
       "platforms": [
         "Mobile"
       ],
-      "thumb": ""
+      "thumb": "Images/Credits/GolfClash.jpg"
     }
   ]
 }
