@@ -1308,13 +1308,41 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 .fb-pro:hover{color:var(--ink)}
 .fb-pro.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:500}
 
+
+.mfull{
+  position:absolute;bottom:.75rem;right:.75rem;
+  width:32px;height:32px;border-radius:4px;
+  background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.6);cursor:none;z-index:5;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.mfull:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.mbox.fullscreen{max-width:100vw;height:100vh;border-radius:0}
+.mbg.fullscreen{padding:0}
+
 /* ── MODAL ── */
-.mbg{position:fixed;inset:0;z-index:9000;background:rgba(6,5,4,0.92);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:.5rem}
+
+/* FULLSCREEN */
+.mfull{
+  position:absolute;bottom:.75rem;right:.75rem;z-index:6;
+  width:36px;height:36px;border-radius:6px;
+  background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);
+  color:#fff;font-size:.75rem;cursor:none;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.mfull:hover{background:var(--accent);border-color:var(--accent)}
+.mfull svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
+
+.mbg{position:fixed;inset:0;z-index:9000;background:rgba(6,5,4,0.95);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:40px}
 .mbg.open{display:flex}
-.mbox{width:100%;max-width:1500px;height:90vh;border-radius:10px;border:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:row;background:var(--bg2)}
+.mbox{width:100%;height:100%;border-radius:10px;border:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:row;background:var(--bg2)}
 .mleft{flex:1;min-width:0;display:flex;flex-direction:column;background:#000;border-right:1px solid var(--rule)}
 .mview{flex:1;position:relative;min-height:0;background:#0a0806;overflow:hidden}
-.mview img,.mview video,.mview iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:none}
+.mview img{max-width:100%;max-height:100%;object-fit:contain;display:block;position:absolute;inset:0;margin:auto;padding:24px;box-sizing:border-box}
+.mview video{position:absolute;inset:24px;width:calc(100% - 48px);height:calc(100% - 48px);object-fit:contain;border:none}
+.mview iframe{position:absolute;inset:24px;width:calc(100% - 48px);height:calc(100% - 48px);border:none}
 .mph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:6rem}
 .marr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:1rem;cursor:none;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .marr:hover{background:var(--accent)}
@@ -1328,13 +1356,13 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 .mclose{position:absolute;top:.8rem;right:.8rem;z-index:10;width:30px;height:30px;border-radius:50%;background:var(--bg3);border:1px solid var(--rule);color:var(--mid);font-size:.85rem;cursor:none;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .mclose:hover{border-color:var(--accent);color:var(--accent)}
 .mhead{padding:1.2rem 1rem .9rem;border-bottom:1px solid var(--rule);flex-shrink:0}
-.mcat{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
-.mtitle{font-size:.95rem;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.6rem}
+.mcat{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem;opacity:.9}
+.mtitle{font-size:1rem;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.6rem}
 .mtags{display:flex;flex-wrap:wrap;gap:.3rem}
-.mtag{font-family:var(--mono);font-size:.52rem;padding:.14rem .42rem;border:1px solid var(--rule);color:var(--mid);border-radius:3px;background:var(--bg3)}
+.mtag{font-family:var(--mono);font-size:.52rem;padding:.14rem .42rem;border:1px solid var(--faint);color:var(--mid);border-radius:3px;background:var(--bg3);opacity:.85}
 .mbody{flex:1;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.9rem}
-.mslabel{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem;padding-bottom:.35rem;border-bottom:1px solid var(--rule)}
-.mdesc,.mwf{font-size:.76rem;line-height:1.85;color:var(--mid)}
+.mslabel{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);opacity:.7;margin-bottom:.4rem;padding-bottom:.35rem;border-bottom:1px solid var(--rule)}
+.mdesc,.mwf{font-size:.78rem;line-height:1.85;color:var(--mid);opacity:.9}
 .mcap{font-family:var(--mono);font-size:.62rem;color:var(--faint);font-style:italic;padding:.45rem .7rem;background:var(--bg3);border-radius:3px;border-left:2px solid var(--accent)}
 @media(max-width:640px){.mbox{flex-direction:column;height:100vh;border-radius:0}.mleft{border-right:none;border-bottom:1px solid var(--rule);flex:none;height:50vh}.mright{width:100%;flex:1}.mbg{padding:0}}
 html.modal-open body{overflow:hidden;position:fixed;width:100%}
@@ -1962,6 +1990,31 @@ function updateLoadMore() {
 
 
 
+
+function toggleFullscreen() {
+  const box = document.querySelector('.mbox');
+  const bg = document.getElementById('mbg');
+  const isFs = box.classList.contains('fullscreen');
+  box.classList.toggle('fullscreen', !isFs);
+  bg.classList.toggle('fullscreen', !isFs);
+  const btn = document.getElementById('mfull');
+  btn.title = isFs ? 'Fullscreen' : 'Exit fullscreen';
+  btn.innerHTML = isFs
+    ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>'
+    : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>';
+}
+
+
+// FULLSCREEN
+function toggleFullscreen() {
+  const view = document.getElementById('mview');
+  if (!document.fullscreenElement) {
+    view.requestFullscreen().catch(err => console.log(err));
+  } else {
+    document.exitFullscreen();
+  }
+}
+
 // THEME TOGGLE
 function toggleTheme() {
   const root = document.documentElement;
@@ -1987,6 +2040,9 @@ function toggleTheme() {
         <button class="marr p h" id="mprev">&#8592;</button>
         <button class="marr n h" id="mnext">&#8594;</button>
         <div class="mcnt" id="mcnt"></div>
+        <button class="mfull" id="mfull" title="Fullscreen" onclick="toggleFullscreen()">
+          <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+        </button>
       </div>
       <div class="mstrip" id="mstrip"></div>
     </div>
