@@ -39,7 +39,6 @@
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-y:scroll}
 /* prevent scroll when modal open */
 html.modal-open body{
   overflow:hidden;
@@ -48,6 +47,7 @@ html.modal-open body{
 }
 html.modal-open::-webkit-scrollbar{width:0 !important;display:none !important}
 html.modal-open{scrollbar-width:none !important}
+html{scroll-behavior:smooth;overflow-y:scroll;cursor:none}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;cursor:none;font-size:15px;line-height:1.65}
 
 /* CURSOR */
@@ -1624,8 +1624,10 @@ html.modal-open{scrollbar-width:none !important}
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
 let mx=0,my=0,rx=0,ry=0;
+if(cur&&ring){
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
 (function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+}
 
 document.querySelectorAll('.fb').forEach(b=>{
   b.addEventListener('click',()=>{
