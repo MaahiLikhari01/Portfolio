@@ -734,6 +734,16 @@ html.modal-open body{overflow:hidden;position:fixed;width:100%}
 html.modal-open::-webkit-scrollbar{width:0 !important;display:none !important}
 html.modal-open{scrollbar-width:none !important}
 
+/* LOAD MORE BUTTONS */
+.btn-loadmore{
+  font-family:var(--sans);font-size:.72rem;font-weight:600;
+  padding:.55rem 1.4rem;
+  background:transparent;color:var(--ink);
+  border:1px solid var(--mid);border-radius:4px;
+  cursor:none;transition:all .15s;
+}
+.btn-loadmore:hover{border-color:var(--accent);color:var(--accent)}
+
 </style>
 </head>
 <body>
@@ -790,8 +800,8 @@ html.modal-open{scrollbar-width:none !important}
     <!-- Cards injected by JS from media.json -->
   </div>
   <div id="load-more-wrap" style="display:flex;justify-content:center;gap:1rem;padding:2rem 0;border-top:1px solid var(--rule)">
-    <button id="show-less-btn" onclick="showLess()" style="display:none">Show Less</button>
-    <button id="load-more-btn" onclick="loadMore()">Load More <span id="load-more-count"></span></button>
+    <button id="show-less-btn" onclick="showLess()" class="btn-loadmore" style="display:none">Show Less</button>
+    <button id="load-more-btn" onclick="loadMore()" class="btn-loadmore">Load More <span id="load-more-count"></span></button>
   </div>
 </section>
 
