@@ -17,9 +17,10 @@
       "thumb": "Images/project-1/maahi-likhari-landscape.jpg",
       "media": [
         {
-          "type": "placeholder",
+          "type": "image",
+          "src": "Images/project-1/maahi-likhari-landscape.jpg",
           "icon": "🌅",
-          "caption": "Images/project-1/maahi-likhari-landscape.jpg"
+          "caption": "Dawn — shader breakdown"
         },
         {
           "type": "youtube",
