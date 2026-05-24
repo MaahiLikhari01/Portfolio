@@ -2,75 +2,321 @@
   "projects": [
     {
       "id": 0,
-      "title": "Dynamic Material Systems",
-      "cat": "Personal · Shader / HLSL",
-      "desc": "A system of dynamic materials built using Material Parameter Collections and Blueprints to animate and control UI visuals in real time. Designed for flexibility across multiple projects with minimal overhead.",
-      "workflow": "Started by identifying common UI material patterns across the project. Built a master parameter collection to drive colour, opacity, and animation globally. Created individual material functions for each effect type, then wired them into a single master material with switch parameters for artists to toggle features without touching nodes.",
-      "tags": ["HLSL", "UE5", "Blueprints", "Material Parameter Collections"],
-      "thumb": "Images/project-1/maahi-likhari-landscape.jpg",
+      "title": "Auto Landscape Material",
+      "cat": "Shader",
+      "icon": "🌅",
+      "filter": "shaders",
+      "desc": "A system of dynamic materials built using Material Parameter Collections and Blueprints to animate and control UI visuals in real time.",
+      "workflow": "Started by identifying common UI material patterns. Built a master parameter collection to drive colour, opacity, and animation globally. Created individual material functions for each effect type, then wired them into a single master material with switch parameters for artists to toggle without touching nodes.",
+      "tags": [
+        "HLSL",
+        "UE5",
+        "Blueprints",
+        "Material Parameter Collections"
+      ],
+      "thumb": "",
       "media": [
-        { "type": "image", "src": "Images/project-1/maahi-likhari-landscape.jpg", "caption": "Overview of the material graph" }
+        {
+          "type": "placeholder",
+          "icon": "🌅",
+          "caption": "Add your screenshots here"
+        },
+        {
+          "type": "youtube",
+          "src": "https://www.youtube.com/embed/bYamvYghkog",
+          "caption": "Dawn — shader breakdown"
+        }
       ]
     },
     {
       "id": 1,
       "title": "UI Shader Toolkit",
-      "cat": "Personal · UI Materials",
-      "desc": "A collection of stylized and animated UI material functions built for diegetic and screen-space UI elements.",
-      "workflow": "Describe your workflow here — what problem did you solve, how did you approach it, what tools did you use, what did you learn?",
-      "tags": ["HLSL", "UI Tech Art", "UE5", "Material Functions"],
+      "cat": "UI Materials",
+      "icon": "🎮",
+      "filter": "ui",
+      "desc": "A collection of stylized and animated UI material functions for diegetic and screen-space UI elements.",
+      "workflow": "Describe your workflow here.",
+      "tags": [
+        "HLSL",
+        "UI Tech Art",
+        "UE5",
+        "Material Functions"
+      ],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🎮", "caption": "" }
+        {
+          "type": "placeholder",
+          "icon": "🎮",
+          "caption": "Add your screenshots here"
+        }
       ]
     },
     {
       "id": 2,
       "title": "Construction Viz Materials",
-      "cat": "Personal · Shader / PBR",
+      "cat": "Shader / PBR",
+      "icon": "🏔️",
+      "filter": "professional",
       "desc": "Physically based materials and shaders for real-time architectural visualization.",
       "workflow": "Describe your workflow here.",
-      "tags": ["PBR", "UE5", "Architectural Viz", "HLSL"],
+      "tags": [
+        "PBR",
+        "UE5",
+        "Architectural Viz",
+        "HLSL"
+      ],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🏔️", "caption": "" }
+        {
+          "type": "placeholder",
+          "icon": "🏔️",
+          "caption": "Add your screenshots here"
+        }
       ]
     },
     {
       "id": 3,
       "title": "Procedural Function Library",
-      "cat": "Personal · Tool / Python",
+      "cat": "Tool / Python",
+      "icon": "🛠️",
+      "filter": "professional",
       "desc": "A reusable library of procedural material functions enabling stylized and dynamic material creation across multiple projects.",
       "workflow": "Describe your workflow here.",
-      "tags": ["Python", "UE5", "Material Functions", "Pipeline"],
+      "tags": [
+        "Python",
+        "UE5",
+        "Material Functions",
+        "Pipeline"
+      ],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🛠️", "caption": "" }
+        {
+          "type": "placeholder",
+          "icon": "🛠️",
+          "caption": "Add your screenshots here"
+        }
       ]
     },
     {
       "id": 4,
       "title": "Master Material System",
-      "cat": "Personal · UI Material",
-      "desc": "A master material architecture built to maintain visual consistency and reduce redundant shader variations.",
+      "cat": "UI Material",
+      "icon": "🌿",
+      "filter": "ui",
+      "desc": "A master material architecture to maintain visual consistency and reduce redundant shader variations.",
       "workflow": "Describe your workflow here.",
-      "tags": ["UE5", "Master Materials", "UI Tech Art", "Optimization"],
+      "tags": [
+        "UE5",
+        "Master Materials",
+        "UI Tech Art",
+        "Optimization"
+      ],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🌿", "caption": "" }
+        {
+          "type": "placeholder",
+          "icon": "🌿",
+          "caption": "Add your screenshots here"
+        }
       ]
     },
     {
       "id": 5,
       "title": "Material Transition System",
-      "cat": "Personal · Shader / Animated",
+      "cat": "Shader / Animated",
+      "icon": "🌊",
+      "filter": "effects",
       "desc": "An animated material system to visualize progressive building assembly and material transitions over time.",
       "workflow": "Describe your workflow here.",
-      "tags": ["HLSL", "Level Sequencer", "UE5", "Animation"],
+      "tags": [
+        "HLSL",
+        "Level Sequencer",
+        "UE5",
+        "Animation"
+      ],
       "thumb": "",
       "media": [
-        { "type": "placeholder", "icon": "🌊", "caption": "" }
+        {
+          "type": "placeholder",
+          "icon": "🌊",
+          "caption": "Add your screenshots here"
+        }
       ]
+    },
+    {
+      "id": 6,
+      "title": "Holographic Shader",
+      "cat": "Shader / HLSL",
+      "icon": "🌈",
+      "filter": "shaders",
+      "desc": "Iridescent holographic surface shader with procedural colour shifting.",
+      "workflow": "Describe your workflow here.",
+      "tags": [
+        "HLSL",
+        "UE5"
+      ],
+      "thumb": "",
+      "media": [
+        {
+          "type": "placeholder",
+          "icon": "🌈",
+          "caption": "Add your screenshots here"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "HUD Material System",
+      "cat": "UI Materials",
+      "icon": "📱",
+      "filter": "ui",
+      "desc": "Sci-fi HUD material elements with reactive state transitions.",
+      "workflow": "Describe your workflow here.",
+      "tags": [
+        "UI",
+        "UE5"
+      ],
+      "thumb": "",
+      "media": [
+        {
+          "type": "placeholder",
+          "icon": "📱",
+          "caption": "Add your screenshots here"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "LOD Automation Tool",
+      "cat": "Tool",
+      "icon": "⚡",
+      "filter": "professional",
+      "desc": "Python tool for automated LOD generation across large asset libraries.",
+      "workflow": "Describe your workflow here.",
+      "tags": [
+        "Python",
+        "Pipeline"
+      ],
+      "thumb": "",
+      "media": [
+        {
+          "type": "placeholder",
+          "icon": "⚡",
+          "caption": "Add your screenshots here"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Lava Flow Shader",
+      "cat": "Effects / VFX",
+      "icon": "🌋",
+      "filter": "effects",
+      "desc": "Animated lava flow material with procedural heat distortion and emissive glow.",
+      "workflow": "Describe your workflow here.",
+      "tags": [
+        "HLSL",
+        "UE5",
+        "VFX"
+      ],
+      "thumb": "",
+      "media": [
+        {
+          "type": "placeholder",
+          "icon": "🌋",
+          "caption": "Add your screenshots here"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Crosshair System",
+      "cat": "UI / Effects",
+      "icon": "🎯",
+      "filter": "ui",
+      "desc": "Dynamic UI crosshair material system with reactive state feedback.",
+      "workflow": "Describe your workflow here.",
+      "tags": [
+        "UI",
+        "UE5"
+      ],
+      "thumb": "",
+      "media": [
+        {
+          "type": "placeholder",
+          "icon": "🎯",
+          "caption": "Add your screenshots here"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Ice Surface Shader",
+      "cat": "Shader",
+      "icon": "❄️",
+      "filter": "shaders",
+      "desc": "Procedural ice surface material with subsurface scattering and depth-based colouring.",
+      "workflow": "Describe your workflow here.",
+      "tags": [
+        "HLSL",
+        "UE5"
+      ],
+      "thumb": "",
+      "media": [
+        {
+          "type": "placeholder",
+          "icon": "❄️",
+          "caption": "Add your screenshots here"
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "skate",
+      "game": "skate.",
+      "studio": "EA · Full Circle",
+      "role": "UI Technical Artist",
+      "year": "2025",
+      "platforms": [
+        "PC",
+        "Console"
+      ],
+      "thumb": ""
+    },
+    {
+      "id": "halo",
+      "game": "Halo Infinite",
+      "studio": "343 Industries · Xbox",
+      "role": "Technical Artist",
+      "year": "2021",
+      "platforms": [
+        "PC",
+        "Xbox"
+      ],
+      "thumb": ""
+    },
+    {
+      "id": "exobourne",
+      "game": "Exobourne",
+      "studio": "Sharkmob",
+      "role": "Technical Artist",
+      "year": "2023",
+      "platforms": [
+        "PC"
+      ],
+      "thumb": ""
+    },
+    {
+      "id": "golfclash",
+      "game": "Golf Clash",
+      "studio": "Playdemic · EA",
+      "role": "Technical Artist",
+      "year": "2023",
+      "platforms": [
+        "Mobile"
+      ],
+      "thumb": ""
     }
   ]
 }
