@@ -2,33 +2,28 @@
   "projects": [
     {
       "id": 0,
-      "title": "Auto Landscape Material",
-      "cat": "Shader",
-      "icon": "🌅",
-      "filter": "shaders",
-      "desc": "A system of dynamic materials built using Material Parameter Collections and Blueprints to animate and control UI visuals in real time.",
-      "workflow": "Started by identifying common UI material patterns. Built a master parameter collection to drive colour, opacity, and animation globally. Created individual material functions for each effect type, then wired them into a single master material with switch parameters for artists to toggle without touching nodes.",
+      "title": "Master Material System",
+      "cat": "UI Material",
+      "icon": "🌿",
+      "filter": "ui",
+      "desc": "A master material architecture to maintain visual consistency and reduce redundant shader variations.",
+      "workflow": "Describe your workflow here.",
       "tags": [
-        "HLSL",
         "UE5",
-        "Blueprints",
-        "Material Parameter Collections"
+        "Master Materials",
+        "UI Tech Art",
+        "Optimization"
       ],
-      "thumb": "Images/project-1/maahi-likhari-landscape.jpg",
+      "thumb": "",
       "media": [
         {
-          "type": "image",
-          "src": "Images/project-1/maahi-likhari-landscape.jpg",
-          "icon": "🌅",
-          "caption": "Dawn — shader breakdown"
-        },
-        {
-          "type": "youtube",
-          "src": "https://www.youtube.com/embed/bYamvYghkog",
-          "caption": "Dawn — shader breakdown"
+          "type": "placeholder",
+          "icon": "🌿",
+          "caption": "Add your screenshots here"
         }
       ]
-    },
+    }
+    ,
     {
       "id": 1,
       "title": "UI Shader Toolkit",
@@ -123,24 +118,30 @@
     },
     {
       "id": 5,
-      "title": "Material Transition System",
-      "cat": "Shader / Animated",
-      "icon": "🌊",
-      "filter": "effects",
-      "desc": "An animated material system to visualize progressive building assembly and material transitions over time.",
-      "workflow": "Describe your workflow here.",
+      "title": "Auto Landscape Material",
+      "cat": "Shader",
+      "icon": "🌅",
+      "filter": "shaders",
+      "desc": "A system of dynamic materials built using Material Parameter Collections and Blueprints to animate and control UI visuals in real time.",
+      "workflow": "Started by identifying common UI material patterns. Built a master parameter collection to drive colour, opacity, and animation globally. Created individual material functions for each effect type, then wired them into a single master material with switch parameters for artists to toggle without touching nodes.",
       "tags": [
-        "HLSL",
-        "Level Sequencer",
-        "UE5",
-        "Animation"
+        "Shaders",
+        "UE4",
+        "Materials",
+        "Level Sequncer"
       ],
-      "thumb": "",
+      "thumb": "Images/project-1/maahi-likhari-landscape.jpg",
       "media": [
         {
-          "type": "placeholder",
-          "icon": "🌊",
-          "caption": "Add your screenshots here"
+          "type": "image",
+          "src": "Images/project-1/maahi-likhari-landscape.jpg",
+          "icon": "🌅",
+          "caption": "Dawn — shader breakdown"
+        },
+        {
+          "type": "youtube",
+          "src": "https://www.youtube.com/embed/bYamvYghkog",
+          "caption": "Dawn — shader breakdown"
         }
       ]
     },
