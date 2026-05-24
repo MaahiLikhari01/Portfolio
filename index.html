@@ -1697,6 +1697,16 @@ async function loadProjects() {
     if (json.credits) buildCredits(json.credits);
   } catch(e) {
     console.warn('Could not load media.json:', e);
+    // fallback — show placeholder cards so page isn't empty
+    projectData = [
+      {id:0,title:"Dynamic Material Systems",cat:"Shader / HLSL",icon:"🌅",filter:"shaders",desc:"",workflow:"",tags:[],thumb:"",media:[{type:"placeholder",icon:"🌅",caption:""}]},
+      {id:1,title:"UI Shader Toolkit",cat:"UI Materials",icon:"🎮",filter:"ui",desc:"",workflow:"",tags:[],thumb:"",media:[{type:"placeholder",icon:"🎮",caption:""}]},
+      {id:2,title:"Construction Viz Materials",cat:"Shader / PBR",icon:"🏔️",filter:"professional",desc:"",workflow:"",tags:[],thumb:"",media:[{type:"placeholder",icon:"🏔️",caption:""}]},
+      {id:3,title:"Procedural Function Library",cat:"Tool / Python",icon:"🛠️",filter:"professional",desc:"",workflow:"",tags:[],thumb:"",media:[{type:"placeholder",icon:"🛠️",caption:""}]},
+      {id:4,title:"Master Material System",cat:"UI Material",icon:"🌿",filter:"ui",desc:"",workflow:"",tags:[],thumb:"",media:[{type:"placeholder",icon:"🌿",caption:""}]},
+      {id:5,title:"Material Transition System",cat:"Shader / Animated",icon:"🌊",filter:"effects",desc:"",workflow:"",tags:[],thumb:"",media:[{type:"placeholder",icon:"🌊",caption:""}]}
+    ];
+    buildGrid();
   }
 }
 
@@ -1727,6 +1737,7 @@ function buildGrid() {
   });
   initLoadMore();
   observeReveal();
+}
 
 function buildCredits(credits) {
   const grid = document.querySelector('.titles-grid');
