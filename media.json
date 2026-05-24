@@ -14,12 +14,12 @@
         "Blueprints",
         "Material Parameter Collections"
       ],
-      "thumb": "",
+      "thumb": "Images/project-1/maahi-likhari-landscape.jpg",
       "media": [
         {
           "type": "placeholder",
           "icon": "🌅",
-          "caption": "Add your screenshots here"
+          "caption": "Images/project-1/maahi-likhari-landscape.jpg"
         },
         {
           "type": "youtube",
@@ -289,7 +289,7 @@
       "game": "Halo Infinite",
       "studio": "343 Industries · Xbox",
       "role": "Technical Artist",
-      "year": "2022",
+      "year": "2023",
       "platforms": [
         "PC",
         "Xbox"
