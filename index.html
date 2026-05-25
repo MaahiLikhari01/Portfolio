@@ -21,6 +21,7 @@
   --mono:     'DM Mono', monospace;
   --sans:     'Nunito', sans-serif;
   --serif:    'Nunito', sans-serif;
+  --banner-img: url('banner.png'); /* ← swap your banner image path here */
 }
 
 [data-theme="light"] {
@@ -111,48 +112,53 @@ nav{
   position:absolute;inset:0;
   pointer-events:none;
   overflow:hidden;
+  background-image:var(--banner-img, none);
+  background-size:cover;
+  background-position:60% center;
 }
-/* Animated mesh gradient - shader-like without being distracting */
+/* Dark overlay — stronger left so text is readable */
 .intro-banner::before{
   content:'';
-  position:absolute;inset:-50%;
-  width:200%;height:200%;
+  position:absolute;inset:0;
   background:
-    radial-gradient(ellipse at var(--x1,75%) var(--y1,40%), rgba(196,94,26,0.28) 0%, transparent 40%),
-    radial-gradient(ellipse at var(--x2,20%) var(--y2,70%), rgba(74,124,111,0.22) 0%, transparent 40%),
-    radial-gradient(ellipse at var(--x3,55%) var(--y3,20%), rgba(126,184,201,0.18) 0%, transparent 35%),
-    radial-gradient(ellipse at var(--x4,40%) var(--y4,80%), rgba(200,168,100,0.18) 0%, transparent 35%);
-  animation: meshshift 8s ease-in-out infinite alternate;
-  filter: blur(50px);
+    linear-gradient(to right, rgba(6,5,4,0.88) 35%, rgba(6,5,4,0.35) 100%),
+    linear-gradient(to top, rgba(6,5,4,0.75) 0%, transparent 55%);
 }
-@keyframes meshshift {
-  0%   { transform: translate(0%,0%) scale(1);     opacity:.9; }
-  20%  { transform: translate(4%,-3%) scale(1.06); opacity:1; }
-  40%  { transform: translate(-3%,4%) scale(0.95); opacity:.85; }
-  60%  { transform: translate(5%,2%) scale(1.05);  opacity:1; }
-  80%  { transform: translate(-2%,-4%) scale(0.97);opacity:.9; }
-  100% { transform: translate(2%,3%) scale(1.03);  opacity:.95; }
-}
-/* grain overlay + animated dot grid */
+/* UE5 dot grid + animated orange glow pulse */
 .intro-banner::after{
   content:'';
   position:absolute;inset:0;
   background-image:
-    radial-gradient(circle, rgba(220,150,80,0.2) 1px, transparent 1px),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
-  background-size: 28px 28px, 200px 200px;
-  animation: dotdrift 10s linear infinite;
-  opacity:1;
+    radial-gradient(circle, rgba(220,150,80,0.18) 1px, transparent 1px);
+  background-size:28px 28px;
+  animation: dotdrift 12s linear infinite;
+  -webkit-mask-image:radial-gradient(ellipse at center, transparent 30%, black 80%);
+  mask-image:radial-gradient(ellipse at center, transparent 30%, black 80%);
+}
+/* Animated orange glow — mimics node selection */
+.intro-glow{
+  position:absolute;
+  width:600px;height:300px;
+  top:50%;left:55%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse, rgba(224,106,32,0.18) 0%, transparent 70%);
+  animation:glowpulse 3s ease-in-out infinite alternate;
+  pointer-events:none;
+  z-index:0;
+}
+@keyframes glowpulse{
+  0%  { opacity:0.4; transform:translate(-50%,-50%) scale(1);   }
+  100%{ opacity:1;   transform:translate(-50%,-50%) scale(1.15);}
 }
 @keyframes dotdrift {
-  0%   { background-position: 0px 0px, 0px 0px; }
-  100% { background-position: 28px 28px, 200px 200px; }
+  0%   { background-position: 0px 0px; }
+  100% { background-position: 28px 28px; }
 }
 .intro-inner{
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
-  padding:5rem 2.5rem 1rem;
+  padding:4rem 2.5rem 1.5rem;
   position:relative;z-index:1;
   width:100%;
 }
@@ -770,7 +776,7 @@ html.modal-open{scrollbar-width:none !important}
 
 <!-- INTRO -->
 <section id="intro">
-  <div class="intro-banner"></div>
+  <div class="intro-banner"><div class="intro-glow"></div></div>
   <div class="intro-inner reveal in">
     <div>
       <h1 class="intro-name">Maahi<br/><em>Likhari</em></h1>

@@ -56,24 +56,44 @@
     },
     {
       "id": 2,
-      "title": "Construction Viz Materials",
-      "cat": "Shader / PBR",
-      "icon": "🏔️",
-      "filter": "professional",
-      "desc": "Physically based materials and shaders for real-time architectural visualization.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "PBR",
-        "UE5",
-        "Architectural Viz",
-        "HLSL"
-      ],
-      "thumb": "",
+      "title": "Point-Click Navigation System",
+      "cat": "Blueprint / Tool",
+      "icon": "🧭",
+      "filter": [ "shaders", "professional" ],
+      "desc": "Personal project. Took the UE5 top-down template and built a custom navigation layer on top. Click anywhere and a spline path appears with animated arrow decals showing the direction of travel.",
+      "workflow": "The template handled basic click-to-move so I focused on the path visualiser. Built BP_Navigation to grab the cursor world position and construct a spline to the target. Instead of scrolling UVs, I wrote a function that calculates the spline length at runtime, figures out how many decals are needed, and places them evenly along it. The decals physically move along the spline each tick to create the animation, and I reused the same pool of meshes rather than spawning and destroying every frame, basically object pooling to keep it performant.",
+      "tags": [ "UE5", "Blueprints", "Splines", "Decals", "Materials" ],
+      "thumb": "Images/project-3/NS_Thumb.jpg",
       "media": [
         {
-          "type": "placeholder",
-          "icon": "🏔️",
-          "caption": "Add your screenshots here"
+          "type": "youtube",
+          "src": "https://www.youtube.com/embed/dyulGKA7dAA",
+          "caption": "Gameplay demo — point-click navigation with animated path"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-3/NS1.png",
+          "caption": "BP_Navigation — full event graph overview"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-3/NS2.png",
+          "caption": "Spline construction & decal spawning logic"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-3/NS3.png",
+          "caption": "Spline construction & decal spawning logic"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-3/NS4.png",
+          "caption": "Arrow decal material"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-3/NS5.png",
+          "caption": "EndPoint decal material"
         }
       ]
     },
