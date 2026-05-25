@@ -2,47 +2,54 @@
   "projects": [
     {
       "id": 0,
-      "title": "Master Material System",
-      "cat": "UI Material",
+      "title": "Skate Missions screen",
+      "cat": "UI",
       "icon": "🌿",
-      "filter": "ui",
-      "desc": "A master material architecture to maintain visual consistency and reduce redundant shader variations.",
-      "workflow": "Describe your workflow here.",
+      "filter": [ "professional", "ui" ],
+      "desc": "Started by auditing the existing screen layout and identifying where things were breaking across different resolutions and states. Rebuilt the panel structure to be more flexible, then worked through the reskin making sure the visual updates played nicely with all the different mission states (locked, active, selected, etc.). Localisation pass involved stress testing text containers with longer strings and adjusting anchoring and truncation so nothing clipped or overlapped. Tested across stretched and non-standard aspect ratios to make sure everything stayed clean.",
       "tags": [
-        "UE5",
-        "Master Materials",
-        "UI Tech Art",
-        "Optimization"
+        "UI Tech Art"
       ],
-      "thumb": "",
+      "thumb": "Images/project-1/Skate_Thumb.png",
       "media": [
         {
-          "type": "placeholder",
-          "icon": "🌿",
-          "caption": "Add your screenshots here"
+          "type": "image",
+          "src": "Images/project-1/Skate1.png",
+          "caption": "Missions Screen Skate (EA - Full Circle)"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-1/Skate2.png",
+          "caption": "Missions Screen Skate (EA - Full Circle)"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-1/Skate3.png",
+          "caption": "Missions Screen Skate (EA - Full Circle)"
         }
       ]
     }
     ,
     {
       "id": 1,
-      "title": "UI Shader Toolkit",
-      "cat": "UI Materials",
+      "title": "Golf Clash",
+      "cat": "UI",
       "icon": "🎮",
-      "filter": "ui",
-      "desc": "A collection of stylized and animated UI material functions for diegetic and screen-space UI elements.",
-      "workflow": "Describe your workflow here.",
+      "filter": [ "professional", "ui" ],
+      "desc": "Worked through the main menu reskin keeping everything consistent with Golf Clash's existing style.Worked through the main menu reskin keeping everything consistent with Golf Clash's existing style. The chest slots sidebar was a brand new addition so laid that out from scratch, getting all the slot states in and making sure the whole thing sat correctly across different mobile resolutions.",
       "tags": [
-        "HLSL",
-        "UI Tech Art",
-        "UE5",
-        "Material Functions"
+        "UI Tech Art"
       ],
-      "thumb": "",
+      "thumb": "Images/project-2/GolfClash_Thumb.jpg",
       "media": [
         {
-          "type": "placeholder",
-          "icon": "🎮",
+          "type": "image",
+          "src": "Images/project-2/GolfClash1.jpeg",
+          "caption": "Add your screenshots here"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-2/GolfClash2.jpeg",
           "caption": "Add your screenshots here"
         }
       ]
@@ -119,7 +126,7 @@
     {
       "id": 5,
       "title": "Auto Landscape Material",
-      "cat": "Shader",
+      "cat": "Shaders",
       "icon": "🌅",
       "filter": "shaders",
       "desc": "A system of dynamic materials built using Material Parameter Collections and Blueprints to animate and control UI visuals in real time.",
@@ -130,11 +137,11 @@
         "Materials",
         "Level Sequncer"
       ],
-      "thumb": "Images/project-1/maahi-likhari-landscape.jpg",
+      "thumb": "Images/project-6/maahi-likhari-landscape.jpg",
       "media": [
         {
           "type": "image",
-          "src": "Images/project-1/maahi-likhari-landscape.jpg",
+          "src": "Images/project-6/maahi-likhari-landscape.jpg",
           "icon": "🌅",
           "caption": "Dawn — shader breakdown"
         },
@@ -290,7 +297,7 @@
       "id": "halo",
       "game": "Halo Infinite",
       "studio": "343 Industries · Xbox",
-      "role": "Technical Artist",
+      "role": "UI Technical Artist",
       "year": "2023",
       "platforms": [
         "PC",
@@ -302,7 +309,7 @@
       "id": "exoborne",
       "game": "Exoborne",
       "studio": "Sharkmob",
-      "role": "Technical Artist",
+      "role": "UI Technical Artist",
       "year": "2024",
       "platforms": [
         "PC"
@@ -313,7 +320,7 @@
       "id": "golfclash",
       "game": "Golf Clash",
       "studio": "Playdemic · EA",
-      "role": "Technical Artist",
+      "role": "UI Technical Artist",
       "year": "2024",
       "platforms": [
         "Mobile"
