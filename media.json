@@ -59,7 +59,7 @@
       "title": "Point-Click Navigation System",
       "cat": "Blueprint / Tool",
       "icon": "🧭",
-      "filter": [ "shaders", "professional" ],
+      "filter": [ "ui", "tool" ],
       "desc": "Personal project. Took the UE5 top-down template and built a custom navigation layer on top. Click anywhere and a spline path appears with animated arrow decals showing the direction of travel.",
       "workflow": "The template handled basic click-to-move so I focused on the path visualiser. Built BP_Navigation to grab the cursor world position and construct a spline to the target. Instead of scrolling UVs, I wrote a function that calculates the spline length at runtime, figures out how many decals are needed, and places them evenly along it. The decals physically move along the spline each tick to create the animation, and I reused the same pool of meshes rather than spawning and destroying every frame, basically object pooling to keep it performant.",
       "tags": [ "UE5", "Blueprints", "Splines", "Decals", "Materials" ],
@@ -99,47 +99,47 @@
     },
     {
       "id": 3,
-      "title": "Procedural Function Library",
-      "cat": "Tool / Python",
-      "icon": "🛠️",
-      "filter": "professional",
-      "desc": "A reusable library of procedural material functions enabling stylized and dynamic material creation across multiple projects.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "Python",
-        "UE5",
-        "Material Functions",
-        "Pipeline"
-      ],
-      "thumb": "",
+      "title": "SDF Item Slot Material",
+      "cat": "UI Material",
+      "icon": "🔷",
+      "filter": [ "ui", "shaders" ],
+      "desc": "A master UI material for item slots and selection states in UE5. One material handles multiple slot shapes, border styles and selection highlights, all swappable via parameters. Built entirely in the material graph using SDF math with zero texture samples.",
+      "workflow": "The goal was to avoid a separate material per item slot style. Used SDF shapes in the material graph to define the slot boundary, border and corner decorations procedurally. Parameters control the shape type, border width, corner radius, colour and selection state so designers can create any slot variant as a material instance without touching the graph. Ended up at 141 pixel shader instructions covering all variants from one master.",
+      "tags": [ "UE5", "SDF", "UI Tech Art", "Master Material", "Item Slots" ],
+      "thumb": "Images/project-4/ItemMaterial_Thumb.jpg",
       "media": [
         {
-          "type": "placeholder",
-          "icon": "🛠️",
-          "caption": "Add your screenshots here"
+          "type": "youtube",
+          "src": "https://www.youtube.com/embed/yyz7AMvhaS8",
+          "caption": "SDF Item Slot System, one master material"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-4/ItemMaterial1.png",
+          "caption": "Slot variants, rounded rect, circle, corner brackets and selection borders"
+        },
+        {
+          "type": "image",
+          "src": "Images/project-4/ItemMaterial2.png",
+          "caption": "Material graph, 141 pixel shader instructions, zero texture samples"
         }
       ]
     },
     {
       "id": 4,
-      "title": "Master Material System",
-      "cat": "UI Material",
-      "icon": "🌿",
-      "filter": "ui",
-      "desc": "A master material architecture to maintain visual consistency and reduce redundant shader variations.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "UE5",
-        "Master Materials",
-        "UI Tech Art",
-        "Optimization"
-      ],
-      "thumb": "",
+      "title": "Procedural Sci-Fi Tank",
+      "cat": "Tool / Houdini",
+      "icon": "⚙️",
+      "filter": [ "tools" ],
+      "desc": "A procedural Houdini Digital Asset built in 2022 for a sci-fi tank terminal. Fully configurable inside UE4 via Houdini Engine with exposed parameters for artists to iterate without going back to Houdini.",
+      "workflow": "Built the asset in Houdini and exposed key parameters directly to UE4 through Houdini Engine. Artists can adjust overall height and width, control bevel amount, set cage cut depth, toggle cutting the cage in half and add multiple screen variants, all from the details panel without touching the Houdini graph. The goal was to give the art team a flexible modular piece they could dress differently across the level without needing multiple static meshes.",
+      "tags": [ "Houdini", "UE4", "HDA", "Procedural", "Pipeline" ],
+      "thumb": "Images/project-5/ScifiTank_Thumb.jpg",
       "media": [
         {
-          "type": "placeholder",
-          "icon": "🌿",
-          "caption": "Add your screenshots here"
+          "type": "youtube",
+          "src": "https://www.youtube.com/embed/ZgqG2ZIBFrU",
+          "caption": "Procedural Sci-Fi Tank, live parameter editing in UE4"
         }
       ]
     },
@@ -157,11 +157,11 @@
         "Materials",
         "Level Sequncer"
       ],
-      "thumb": "Images/project-6/maahi-likhari-landscape.jpg",
+      "thumb": "Images/project-6/ALM_Thumb.jpg",
       "media": [
         {
           "type": "image",
-          "src": "Images/project-6/maahi-likhari-landscape.jpg",
+          "src": "Images/project-6/ALM1.jpg",
           "icon": "🌅",
           "caption": "Dawn — shader breakdown"
         },
@@ -169,133 +169,6 @@
           "type": "youtube",
           "src": "https://www.youtube.com/embed/bYamvYghkog",
           "caption": "Dawn — shader breakdown"
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Holographic Shader",
-      "cat": "Shader / HLSL",
-      "icon": "🌈",
-      "filter": "shaders",
-      "desc": "Iridescent holographic surface shader with procedural colour shifting.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "HLSL",
-        "UE5"
-      ],
-      "thumb": "",
-      "media": [
-        {
-          "type": "placeholder",
-          "icon": "🌈",
-          "caption": "Add your screenshots here"
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "title": "HUD Material System",
-      "cat": "UI Materials",
-      "icon": "📱",
-      "filter": "ui",
-      "desc": "Sci-fi HUD material elements with reactive state transitions.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "UI",
-        "UE5"
-      ],
-      "thumb": "",
-      "media": [
-        {
-          "type": "placeholder",
-          "icon": "📱",
-          "caption": "Add your screenshots here"
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "title": "LOD Automation Tool",
-      "cat": "Tool",
-      "icon": "⚡",
-      "filter": "professional",
-      "desc": "Python tool for automated LOD generation across large asset libraries.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "Python",
-        "Pipeline"
-      ],
-      "thumb": "",
-      "media": [
-        {
-          "type": "placeholder",
-          "icon": "⚡",
-          "caption": "Add your screenshots here"
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "title": "Lava Flow Shader",
-      "cat": "Effects / VFX",
-      "icon": "🌋",
-      "filter": "effects",
-      "desc": "Animated lava flow material with procedural heat distortion and emissive glow.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "HLSL",
-        "UE5",
-        "VFX"
-      ],
-      "thumb": "",
-      "media": [
-        {
-          "type": "placeholder",
-          "icon": "🌋",
-          "caption": "Add your screenshots here"
-        }
-      ]
-    },
-    {
-      "id": 10,
-      "title": "Crosshair System",
-      "cat": "UI / Effects",
-      "icon": "🎯",
-      "filter": "ui",
-      "desc": "Dynamic UI crosshair material system with reactive state feedback.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "UI",
-        "UE5"
-      ],
-      "thumb": "",
-      "media": [
-        {
-          "type": "placeholder",
-          "icon": "🎯",
-          "caption": "Add your screenshots here"
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "title": "Ice Surface Shader",
-      "cat": "Shader",
-      "icon": "❄️",
-      "filter": "shaders",
-      "desc": "Procedural ice surface material with subsurface scattering and depth-based colouring.",
-      "workflow": "Describe your workflow here.",
-      "tags": [
-        "HLSL",
-        "UE5"
-      ],
-      "thumb": "",
-      "media": [
-        {
-          "type": "placeholder",
-          "icon": "❄️",
-          "caption": "Add your screenshots here"
         }
       ]
     }
