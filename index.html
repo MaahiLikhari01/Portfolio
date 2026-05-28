@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Maahi Likhari, UI Technical Artist</title>
+<title>Maahi Likhari, Technical Artist</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
 :root {
@@ -52,9 +52,9 @@ html{scroll-behavior:smooth;overflow-y:scroll;cursor:none}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;cursor:none;font-size:15px;line-height:1.65}
 
 /* CURSOR */
-#cur{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s;left:-20px;top:-20px}
-#cur-r{position:fixed;width:30px;height:30px;border:1.5px solid rgba(196,94,26,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);left:-20px;top:-20px;transition:width .2s,height .2s}
-body:has(a:hover) #cur,body:has(button:hover) #cur{width:14px;height:14px}
+#cur{position:fixed;width:10px;height:10px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);left:-20px;top:-20px;box-shadow:0 0 0 1.5px rgba(0,0,0,0.5);mix-blend-mode:difference}
+#cur-r{display:none}
+body:has(a:hover) #cur,body:has(button:hover) #cur{width:16px;height:16px}
 
 
 /* THEME TOGGLE */
@@ -755,7 +755,6 @@ html.modal-open{scrollbar-width:none !important}
 <body>
 
 <div id="cur"></div>
-<div id="cur-r"></div>
 
 <nav>
   <a href="#intro" class="nav-name">Maahi Likhari</a>
@@ -780,7 +779,7 @@ html.modal-open{scrollbar-width:none !important}
   <div class="intro-inner reveal in">
     <div>
       <h1 class="intro-name">Maahi<br/><em>Likhari</em></h1>
-      <div class="intro-role">UI Technical Artist, Shaders &amp; Real-time Materials</div>
+      <div class="intro-role">Technical Artist, Shaders &amp; Real-time Systems</div>
     </div>
     <div class="intro-meta">
       <a href="https://www.linkedin.com/in/maahilikhari/" target="_blank">LinkedIn</a> ·
@@ -822,7 +821,7 @@ html.modal-open{scrollbar-width:none !important}
       <div class="title-content">
         <div class="title-studio">EA · Full Circle</div>
         <div class="title-game">skate.</div>
-        <div class="title-role">UI Technical Artist</div>
+        <div class="title-role">Technical Artist</div>
         <div class="title-platforms"><span class="platform">PC</span><span class="platform">Console</span></div>
       </div>
     </div>
@@ -832,7 +831,7 @@ html.modal-open{scrollbar-width:none !important}
       <div class="title-content">
         <div class="title-studio">343 Industries · Xbox</div>
         <div class="title-game">Halo Infinite</div>
-        <div class="title-role">UI Technical Artist</div>
+        <div class="title-role">Technical Artist</div>
         <div class="title-platforms"><span class="platform">PC</span><span class="platform">Xbox</span></div>
       </div>
     </div>
@@ -842,7 +841,7 @@ html.modal-open{scrollbar-width:none !important}
       <div class="title-content">
         <div class="title-studio">Sharkmob</div>
         <div class="title-game">Exobourne</div>
-        <div class="title-role">UI Technical Artist</div>
+        <div class="title-role">Technical Artist</div>
         <div class="title-platforms"><span class="platform">PC</span></div>
       </div>
     </div>
@@ -852,7 +851,7 @@ html.modal-open{scrollbar-width:none !important}
       <div class="title-content">
         <div class="title-studio">Playdemic · EA</div>
         <div class="title-game">Golf Clash</div>
-        <div class="title-role">UI Technical Artist</div>
+        <div class="title-role">Technical Artist</div>
         <div class="title-platforms"><span class="platform">Mobile</span></div>
       </div>
     </div>
@@ -875,15 +874,15 @@ html.modal-open{scrollbar-width:none !important}
         <div class="eco">Sprung Studios</div>
       </div>
       <div class="erow-r">
-        <div class="erole">UI Technical Artist</div>
-        <div class="ebody">UI tech art across multiple shipped titles: shaders, materials, and systems for HUD, menus, stores, and scoreboards.
+        <div class="erole">Technical Artist</div>
+        <div class="ebody">Tech art across multiple shipped AAA titles: shaders, materials, pipelines, and real-time systems for HUD, menus, stores, and scoreboards.
           <ul class="ebullets">
-            <li>Built tabbed UMG navigation with Blueprint interfaces and event dispatchers for stateful tab switching and data binding</li>
-            <li>Wrote custom HLSL for 9-slice shader support, resolution-independent UI borders at any resolution</li>
-            <li>Developed HUD, menu, and scoreboard materials using Material Parameter Collections and Blueprint-driven animated state transitions</li>
-            <li>Maintained a master material library with reusable functions, eliminating redundant shader variants across projects</li>
-            <li>Ensured localization compatibility across UI systems for console and PC, covering font scaling and layout flexibility</li>
-            <li>Authored shader breakdowns and documentation to standardize workflows across art and engineering teams</li>
+            <li>Developed HLSL shaders and real-time material systems for HUD elements, mission screens, hub layouts, menus, and scoreboards, driving animated state transitions via Material Parameter Collections and Blueprint event dispatchers</li>
+            <li>Wrote a custom HLSL 9-slice shader enabling resolution-independent panels and borders without texture stretching at any resolution</li>
+            <li>Built and maintained a master material library with reusable material functions, eliminating redundant shader variants and accelerating iteration across projects</li>
+            <li>Architected stateful widget and logic systems using Blueprint interfaces, event dispatchers, and MVVM patterns, managing complex state, data binding, and reactive feedback tied to gameplay input</li>
+            <li>Ensured localization compliance across systems with text containers, font scaling, and layouts accommodating multiple languages and accessibility standards on console and PC</li>
+            <li>Collaborated with engineers and artists to define asset pipelines and resolve cross-discipline challenges; authored documentation and shader breakdowns to standardize workflows</li>
           </ul>
         </div>
       </div>
@@ -984,12 +983,12 @@ html.modal-open{scrollbar-width:none !important}
     <div class="about-photo-col">
       <div class="about-photo"><img src="about-photo.jpg" alt="Maahi Likhari"/></div>
       <div class="about-card-name">Maahi Likhari</div>
-      <div class="about-card-role">UI Technical Artist</div>
+      <div class="about-card-role">Technical Artist</div>
       <div class="about-card-location">Vancouver, BC</div>
       <div class="about-card-status"><span class="about-dot"></span>Sprung Studios &middot; Open to work</div>
     </div>
     <div class="about-text">
-      <p class="about-p">Technical Artist with over three years of experience building and optimizing real-time visuals for AAA games. I focus on <strong>UI technical art, shader development, and material systems.</strong> I create the tools and pipelines that let art teams move faster without sacrificing quality.</p>
+      <p class="about-p">Technical Artist with over three years of experience building and optimizing real-time visuals for AAA games. I focus on <strong>shader development, material systems, and pipeline tooling</strong> across Unreal Engine 5, Unity, and Frostbite. I create the tools and workflows that let art teams move faster without sacrificing quality.</p>
       <p class="about-p">I care about the craft. Whether that&rsquo;s a clean master material, a well-documented shader breakdown, or a performance fix nobody else noticed. I like finding elegant solutions to messy problems. I work best in collaborative teams where art and engineering talk to each other.</p>
       <p class="about-p">Currently open to full-time and contract opportunities. Feel free to reach out.</p>
       <div class="about-actions">
@@ -1013,14 +1012,15 @@ html.modal-open{scrollbar-width:none !important}
       </div>
     </div>
     <div class="contact-right reveal in">
-      <div class="cform">
+      <div class="cform" id="cform">
         <div class="crow">
-          <div class="cfield"><label>Name</label><input type="text" placeholder="Your name"/></div>
-          <div class="cfield"><label>Email</label><input type="email" placeholder="your@email.com"/></div>
+          <div class="cfield"><label>Name</label><input id="cf-name" type="text" placeholder="Your name"/></div>
+          <div class="cfield"><label>Email</label><input id="cf-email" type="email" placeholder="your@email.com"/></div>
         </div>
-        <div class="cfield"><label>Subject</label><input type="text" placeholder="What's this about?"/></div>
-        <div class="cfield"><label>Message</label><textarea placeholder="Tell me about the project..."></textarea></div>
-        <button class="btn-send" onclick="alert('Connect your backend here.')">Send message</button>
+        <div class="cfield"><label>Subject</label><input id="cf-subject" type="text" placeholder="What's this about?"/></div>
+        <div class="cfield"><label>Message</label><textarea id="cf-message" placeholder="Tell me about the project..."></textarea></div>
+        <div id="cf-status" style="display:none;font-family:var(--mono);font-size:.72rem;padding:.55rem .9rem;border-radius:4px;margin-bottom:.5rem"></div>
+        <button class="btn-send" id="cf-btn" onclick="sendMessage()">Send message</button>
       </div>
     </div>
   </div>
@@ -1028,15 +1028,13 @@ html.modal-open{scrollbar-width:none !important}
 
 <footer>
   <span>© 2026 Maahi Likhari</span>
-  <span>UI Technical Artist · Vancouver, BC</span>
+  <span>Technical Artist · Vancouver, BC</span>
 </footer>
 
 <script>
-const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
-let mx=0,my=0,rx=0,ry=0;
-if(cur&&ring){
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+const cur=document.getElementById('cur');
+if(cur){
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
 }
 
 document.querySelectorAll('.fb').forEach(b=>{
@@ -1442,6 +1440,67 @@ document.addEventListener('fullscreenchange', () => {
     }
   }
 });
+
+
+// ── CONTACT FORM ──
+async function sendMessage() {
+  const name    = document.getElementById('cf-name').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  const btn     = document.getElementById('cf-btn');
+  const status  = document.getElementById('cf-status');
+
+  if (!name || !email || !message) {
+    showStatus('Please fill in your name, email, and message.', 'error');
+    return;
+  }
+  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    showStatus('Please enter a valid email address.', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  hideStatus();
+
+  try {
+    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message })
+    });
+
+    if (res.ok) {
+      showStatus('Message sent! I\'ll get back to you soon.', 'success');
+      document.getElementById('cf-name').value = '';
+      document.getElementById('cf-email').value = '';
+      document.getElementById('cf-subject').value = '';
+      document.getElementById('cf-message').value = '';
+    } else {
+      const data = await res.json();
+      showStatus(data.errors ? data.errors.map(e => e.message).join(', ') : 'Something went wrong. Try emailing me directly.', 'error');
+    }
+  } catch {
+    showStatus('Could not send — try emailing me directly at maahisingh40@gmail.com', 'error');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Send message';
+}
+
+function showStatus(msg, type) {
+  const el = document.getElementById('cf-status');
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.style.background = type === 'success' ? 'rgba(109,184,122,0.12)' : 'rgba(220,80,60,0.12)';
+  el.style.color = type === 'success' ? '#6db87a' : '#e05040';
+  el.style.border = type === 'success' ? '1px solid rgba(109,184,122,0.3)' : '1px solid rgba(220,80,60,0.3)';
+}
+
+function hideStatus() {
+  document.getElementById('cf-status').style.display = 'none';
+}
 
 // THEME TOGGLE
 function toggleTheme() {
