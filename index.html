@@ -48,13 +48,11 @@ html.modal-open body{
 }
 html.modal-open::-webkit-scrollbar{width:0 !important;display:none !important}
 html.modal-open{scrollbar-width:none !important}
-html{scroll-behavior:smooth;overflow-y:scroll;cursor:none}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;cursor:none;font-size:15px;line-height:1.65}
+html{scroll-behavior:smooth;overflow-y:scroll}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;font-size:15px;line-height:1.65}
 
 /* CURSOR */
-#cur{position:fixed;width:10px;height:10px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);left:-20px;top:-20px;box-shadow:0 0 0 1.5px rgba(0,0,0,0.5);mix-blend-mode:difference}
-#cur-r{display:none}
-body:has(a:hover) #cur,body:has(button:hover) #cur{width:16px;height:16px}
+
 
 
 /* THEME TOGGLE */
@@ -73,7 +71,7 @@ body:has(a:hover) #cur,body:has(button:hover) #cur{width:16px;height:16px}
   display:flex;align-items:center;justify-content:center;
   width:32px;height:32px;border-radius:50%;
   border:1px solid var(--rule);background:var(--bg2);
-  color:var(--mid);cursor:none;
+  color:var(--mid);
   transition:all .2s;flex-shrink:0;
 }
 .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
@@ -225,9 +223,9 @@ nav{
 .about-p{font-size:.88rem;line-height:1.95;color:var(--mid);margin-bottom:1rem}
 .about-p strong{color:var(--ink);font-weight:600}
 .about-actions{display:flex;gap:.8rem;margin-top:1.8rem;flex-wrap:wrap}
-.about-btn-solid{font-size:.72rem;font-weight:600;padding:.55rem 1.3rem;background:var(--ink);color:var(--white);border-radius:4px;text-decoration:none;transition:background .15s;cursor:none;display:inline-block}
+.about-btn-solid{font-size:.72rem;font-weight:600;padding:.55rem 1.3rem;background:var(--ink);color:var(--white);border-radius:4px;text-decoration:none;transition:background .15s;display:inline-block}
 .about-btn-solid:hover{background:var(--accent);color:#fff}
-.about-btn-outline{font-size:.72rem;font-weight:600;padding:.55rem 1.3rem;border:1px solid var(--mid);color:var(--ink);border-radius:4px;text-decoration:none;transition:all .15s;cursor:none;display:inline-block}
+.about-btn-outline{font-size:.72rem;font-weight:600;padding:.55rem 1.3rem;border:1px solid var(--mid);color:var(--ink);border-radius:4px;text-decoration:none;transition:all .15s;display:inline-block}
 .about-btn-outline:hover{border-color:var(--accent);color:var(--accent)}
 
 /* SECTION BAR */
@@ -236,6 +234,14 @@ nav{
   padding:.85rem 2.5rem;border-bottom:1px solid var(--rule);
   background:var(--bg);
 }
+.work-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 2.5rem;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  background:var(--bg);
+}
+.work-title{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
 .sec-label{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
 
 
@@ -244,7 +250,7 @@ nav{
 .work-tab{
   font-size:.78rem;font-weight:600;
   background:transparent;color:var(--mid);border:none;
-  cursor:none;transition:color .15s;
+  transition:color .15s;
   border-bottom:2px solid transparent;
   font-family:var(--sans);
 }
@@ -255,11 +261,11 @@ nav{
 
 /* WORK */
 #work{border-bottom:1px solid var(--rule)}
-.filters{display:flex;gap:0}
+.filters{display:flex;gap:0;margin-left:0}
 .fb{
   font-size:.72rem;padding:.55rem 1rem;
   background:transparent;color:var(--mid);border:none;
-  cursor:none;transition:color .15s;
+  transition:color .15s;
   border-bottom:1.5px solid transparent;margin-bottom:-1px;font-family:var(--sans);
 }
 .fb:hover{color:var(--ink)}
@@ -275,9 +281,11 @@ nav{
   animation:dotdrift 10s linear infinite;
 }
 .wc{
-  position:relative;overflow:hidden;cursor:none;
+  position:relative;overflow:hidden;
   border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
-  padding-bottom:18vw;
+  aspect-ratio:16/7.5;
+  background:var(--bg2);
+  transition:background .4s ease;
 }
 .wc:nth-child(3n){border-right:none}
 .wc:nth-child(4),.wc:nth-child(5),.wc:nth-child(6){border-bottom:none}
@@ -286,9 +294,12 @@ nav{
 .wthumb{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
-  font-size:3rem;transition:transform .55s cubic-bezier(.25,.46,.45,.94);
+  font-size:3rem;
+  opacity:0.2;
+  transition:opacity .6s cubic-bezier(.25,.46,.45,.94), transform .6s cubic-bezier(.25,.46,.45,.94);
+  transform:scale(1);
 }
-.wc:hover .wthumb{transform:scale(1.04)}
+.wc:hover .wthumb{opacity:1;transform:scale(1.04)}
 
 /* painterly warm thumb palettes, firewatch/abzu inspired */
 .t1{background:linear-gradient(160deg,#d4956a 0%,#c4784a 40%,#7a3820 100%)}
@@ -303,23 +314,52 @@ nav{
 .woverlay{
   position:absolute;inset:0;padding:1.2rem 1.4rem;
   display:flex;flex-direction:column;justify-content:flex-end;
-  background:linear-gradient(to top,rgba(28,18,8,.85) 0%,transparent 60%);
-  opacity:0;transition:opacity .25s;
+  background:linear-gradient(to top,rgba(10,8,6,0.95) 0%,rgba(10,8,6,0.4) 60%, transparent 100%);
+  opacity:1;transition:background .6s ease;
+  z-index:2;
 }
-.wc:hover .woverlay{opacity:1}
+.wc:hover .woverlay{
+  background:linear-gradient(to top,rgba(10,8,6,0.9) 0%,transparent 60%);
+}
 .wcat{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
-.wtitle{font-family:var(--sans);font-size:1rem;font-weight:600;color:#faf7f2;line-height:1.2}
-.wsub{font-size:.65rem;color:rgba(250,247,242,.5);margin-top:.2rem;font-family:var(--mono)}
+.wc:hover .wtitle{color:#faf7f2}
+.wc:hover .wsub{color:rgba(250,247,242,.6)}
+.wtitle{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--ink);line-height:1.2;transition:color .3s}
+.wsub{font-size:.65rem;color:var(--mid);margin-top:.2rem;font-family:var(--mono)}
 
 /* TITLES */
-#titles{border-bottom:1px solid var(--rule)}
-.titles-grid{display:flex;flex-direction:row;border-top:1px solid var(--rule)}
+#titles{background:#0f0e0b;border-bottom:none;position:relative}
+#titles::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:80px;
+  background:linear-gradient(to right, transparent, #0f0e0b);
+  pointer-events:none;z-index:5;
+}
+@keyframes creditScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.titles-grid{
+  display:flex;
+  flex-direction:row;
+  width:max-content;
+  border-top:1px solid var(--rule);
+  position:relative;
+}
+.titles-grid-inner{
+  display:flex;
+  flex-direction:row;
+  animation:creditScroll 52.1s linear infinite;
+  width:max-content;
+}
+.titles-grid-inner:hover{
+  animation-play-state:paused;
+}
 .title-card{
   position:relative;overflow:hidden;
   border-right:1px solid var(--rule);
-  height:180px;
-  cursor:none;
-  flex:1;min-width:0;
+  aspect-ratio:1200/450;
+  flex:0 0 30vw;
+  min-width:280px;
 }
 .title-card-bg{
   width:100%;height:100%;
@@ -356,17 +396,17 @@ nav{
 /* text content pinned to bottom */
 .title-content{
   position:absolute;bottom:0;left:0;right:0;
-  padding:1.2rem 1.4rem;
+  padding:1.2rem 1.6rem;
   background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
   z-index:3;
 }
-.title-studio{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem;opacity:1;text-shadow:0 1px 4px rgba(0,0,0,0.8)}
-.title-game{font-family:var(--sans);font-size:1rem;font-weight:700;color:#faf7f2;margin-bottom:.15rem;line-height:1.1;text-shadow:0 1px 6px rgba(0,0,0,0.9)}
-.title-role{font-size:.62rem;color:rgba(250,247,242,.8);margin-bottom:.4rem;font-family:var(--mono);text-shadow:0 1px 4px rgba(0,0,0,0.8)}
+.title-studio{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+.title-game{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.15rem;line-height:1.2}
+.title-role{font-size:.56rem;color:var(--mid);margin-bottom:.3rem;font-family:var(--mono);letter-spacing:.08em}
 .title-foot{display:flex;align-items:center;justify-content:space-between}
 .title-year{font-family:var(--mono);font-size:.58rem;color:rgba(250,247,242,.7);text-shadow:0 1px 4px rgba(0,0,0,0.8)}
 .title-platforms{display:flex;gap:.3rem;flex-wrap:wrap}
-.platform{font-family:var(--mono);font-size:.5rem;padding:.1rem .35rem;border:1px solid rgba(250,247,242,.2);color:rgba(250,247,242,.5);border-radius:2px}
+.platform{font-family:var(--mono);font-size:.5rem;padding:.1rem .35rem;border:1px solid var(--rule);color:var(--mid);border-radius:2px}
 
 /* EXPERIENCE */
 #experience{border-bottom:1px solid var(--rule)}
@@ -374,7 +414,7 @@ nav{
 .etab{
   font-size:.72rem;padding:.65rem 1rem;
   background:transparent;color:var(--mid);border:none;
-  cursor:none;transition:color .15s;
+  transition:color .15s;
   border-bottom:1.5px solid transparent;margin-bottom:-1px;font-family:var(--sans);
 }
 .etab:hover{color:var(--ink)}
@@ -509,7 +549,7 @@ nav{
 .btn-send{
   font-size:.72rem;font-weight:600;letter-spacing:.04em;
   padding:.6rem 1.5rem;background:var(--ink);color:var(--white);
-  border:none;border-radius:4px;cursor:none;
+  border:none;border-radius:4px;
   transition:background .15s;width:fit-content;
 }
 .btn-send:hover{background:var(--accent)}
@@ -518,9 +558,48 @@ nav{
 footer{padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--rule)}
 footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 
+
+/* WORK GRID BLUR REVEAL */
+#work-grid-wrap{position:relative;overflow:hidden}
+#work-grid-wrap .wgrid{
+  filter:blur(12px);
+  transition:filter 1.1s cubic-bezier(.22,.61,.36,1), opacity 1.1s ease;
+  opacity:0.25;
+}
+#work-grid-wrap.revealed .wgrid{
+  filter:blur(0px);
+  opacity:1;
+}
+#work-blur-overlay{display:none}
+
+
+/* CAROUSEL ARROWS */
+.carousel-wrap{position:relative;overflow:hidden;border-top:1px solid var(--rule)}
+.carr-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  z-index:20;
+  background:none;
+  border:none;
+  color:rgba(250,247,242,.35);
+  font-size:3.125rem;
+  font-weight:300;
+  padding:.5rem;
+  transition:color .2s;
+  cursor:pointer;
+}
+.carr-prev{left:.6rem}
+.carr-next{right:.6rem}
+.carr-btn:hover{color:rgba(250,247,242,.9)}
+
 /* REVEAL */
-.reveal{opacity:1;transform:translateY(0);transition:opacity .6s ease,transform .6s ease}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
+
+/* work card stagger */
+.wc.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.wc.reveal.in{opacity:1;transform:translateY(0)}
+.wc.reveal.in:nth-child(3n+2){transition-delay:.12s}
+.wc.reveal.in:nth-child(3n+3){transition-delay:.24s}
 
 
 /* ── TABLET ── */
@@ -541,7 +620,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 .work-tab{
   font-size:.78rem;font-weight:600;
   background:transparent;color:var(--mid);border:none;
-  cursor:none;transition:color .15s;
+  transition:color .15s;
   border-bottom:2px solid transparent;
   font-family:var(--sans);
 }
@@ -557,11 +636,11 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
   .wc:nth-child(2n){border-right:none}
   .wc:nth-child(5),.wc:nth-child(6){border-bottom:none}
   .wc:nth-child(4){border-bottom:1px solid var(--rule)}
-  .wc{padding-bottom:50vw}
+  .wc{aspect-ratio:16/9}
 
   /* TITLES */
   .titles-grid{flex-wrap:wrap}
-  .title-card{flex:0 0 50%;height:140px}
+  .title-card{flex:0 0 62vw;aspect-ratio:1200/450}
   .title-card:nth-child(2n){border-right:none}
   .title-card:nth-child(3),.title-card:nth-child(4){border-top:1px solid var(--rule)}
 
@@ -616,7 +695,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 .work-tab{
   font-size:.78rem;font-weight:600;
   background:transparent;color:var(--mid);border:none;
-  cursor:none;transition:color .15s;
+  transition:color .15s;
   border-bottom:2px solid transparent;
   font-family:var(--sans);
 }
@@ -627,7 +706,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 
 /* WORK */
   .wgrid{grid-template-columns:1fr}
-  .wc{padding-bottom:75vw;border-right:none}
+  .wc{aspect-ratio:16/9;border-right:none}
   .wc:nth-child(3n),.wc:nth-child(2n){border-right:none}
   .wc:nth-child(5),.wc:nth-child(6){border-bottom:1px solid var(--rule)}
   .wc:nth-child(6){border-bottom:none}
@@ -635,7 +714,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
   .fb{white-space:nowrap;font-size:.65rem;padding:.45rem .8rem}
 
   /* TITLES */
-  .title-card{flex:0 0 100%;height:120px;border-right:none;border-top:1px solid var(--rule)}
+  .title-card{flex:0 0 68vw;aspect-ratio:1200/450;border-right:none}
   .title-card:nth-child(2n){border-right:none}
 
   /* EXPERIENCE */
@@ -692,7 +771,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
   position:absolute;bottom:.75rem;right:.75rem;z-index:6;
   width:36px;height:36px;border-radius:6px;
   background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);
-  color:#fff;font-size:.75rem;cursor:none;
+  color:#fff;font-size:.75rem;
   display:flex;align-items:center;justify-content:center;
   transition:background .2s;
 }
@@ -711,7 +790,7 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 .mleft{flex:1;min-width:0;display:flex;flex-direction:column;background:#000;border-right:1px solid var(--rule);overflow:hidden}
 .mview{flex:1;position:relative;min-height:0;background:#0a0806;overflow:hidden}
 .mview img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;inset:0;}
-.marr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:1rem;cursor:none;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.marr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:1rem;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .marr:hover{background:var(--accent)}
 .marr.p{left:.75rem}.marr.n{right:.75rem}.marr.h{display:none}
 .mview video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:none}
@@ -719,11 +798,11 @@ footer span{font-family:var(--mono);font-size:.62rem;color:var(--faint)}
 .mph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:6rem}
 .mcnt{position:absolute;top:.75rem;right:.75rem;font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,0.4);background:rgba(0,0,0,0.5);padding:.2rem .5rem;border-radius:3px}
 .mstrip{flex-shrink:0;height:60px;display:flex;gap:3px;padding:4px;background:var(--bg3);border-top:1px solid var(--rule);overflow-x:auto;align-items:center}
-.mth{flex-shrink:0;width:76px;height:50px;border-radius:3px;border:2px solid transparent;overflow:hidden;cursor:none;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:border-color .15s,opacity .15s;opacity:.5}
+.mth{flex-shrink:0;width:76px;height:50px;border-radius:3px;border:2px solid transparent;overflow:hidden;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:border-color .15s,opacity .15s;opacity:.5}
 .mth img{width:100%;height:100%;object-fit:cover;display:block}
 .mth.a{border-color:var(--accent);opacity:1}.mth:hover{opacity:.85}
 .mright{width:300px;flex-shrink:0;display:flex;flex-direction:column;overflow:hidden;position:relative}
-.mclose{position:fixed;top:calc(40px + .8rem);right:calc(40px + .8rem);z-index:10000;width:30px;height:30px;border-radius:50%;background:var(--bg3);border:1px solid var(--rule);color:var(--mid);font-size:.85rem;cursor:none;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.mclose{position:fixed;top:calc(40px + .8rem);right:calc(40px + .8rem);z-index:10000;width:30px;height:30px;border-radius:50%;background:var(--bg3);border:1px solid var(--rule);color:var(--mid);font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .mclose:hover{border-color:var(--accent);color:var(--accent)}
 .mclose-fs{display:none}
 .mhead{padding:1.2rem 1rem .9rem;border-bottom:1px solid var(--rule);flex-shrink:0}
@@ -746,7 +825,7 @@ html.modal-open{scrollbar-width:none !important}
   padding:.55rem 1.4rem;
   background:transparent;color:var(--ink);
   border:1px solid var(--mid);border-radius:4px;
-  cursor:none;transition:all .15s;
+  transition:all .15s;
 }
 .btn-loadmore:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -754,13 +833,12 @@ html.modal-open{scrollbar-width:none !important}
 </head>
 <body>
 
-<div id="cur"></div>
 
 <nav>
   <a href="#intro" class="nav-name">Maahi Likhari</a>
   <div class="nav-r">
-    <a href="#work">Work</a>
     <a href="#titles">Credits</a>
+    <a href="#work">Work</a>
     <a href="#experience">Resume</a>
     <a href="#skills">Skills</a>
     <a href="#about">About</a>
@@ -790,9 +868,18 @@ html.modal-open{scrollbar-width:none !important}
 </section>
 
 <!-- WORK -->
+<!-- TITLES / CREDITS -->
+<section id="titles">
+  <div class="sec-bar reveal in" style="background:#0f0e0b;padding:1.1rem 2.5rem"><span class="sec-label" style="letter-spacing:.18em">Credits</span></div>
+  <div class="carousel-wrap">
+    <button class="carr-btn carr-prev" onclick="carouselNav(-1)">&#8249;</button>
+    <div class="titles-grid" id="credits-track"></div>
+    <button class="carr-btn carr-next" onclick="carouselNav(1)">&#8250;</button>
+  </div>
+</section>
 <section id="work">
-  <div class="sec-bar reveal in">
-    <span class="sec-label">Work</span>
+  <div class="work-header reveal in">
+    <div class="work-header-left"><span class="work-title">Work</span></div>
     <div class="filters">
       <button class="fb on" data-f="all">All</button>
       <button class="fb" data-f="professional">Professional</button>
@@ -802,59 +889,15 @@ html.modal-open{scrollbar-width:none !important}
       <button class="fb" data-f="tools">Tools</button>
     </div>
   </div>
+  <div id="work-grid-wrap" style="position:relative">
+  <div id="work-blur-overlay"></div>
   <div class="wgrid" id="work-grid">
     <!-- Cards injected by JS from media.json -->
+  </div>
   </div>
   <div id="load-more-wrap" style="display:flex;justify-content:center;gap:1rem;padding:2rem 0;border-top:1px solid var(--rule)">
     <button id="show-less-btn" onclick="showLess()" class="btn-loadmore" style="display:none">Show Less</button>
     <button id="load-more-btn" onclick="loadMore()" class="btn-loadmore">Load More <span id="load-more-count"></span></button>
-  </div>
-</section>
-
-<!-- TITLES / CREDITS -->
-<section id="titles">
-  <div class="sec-bar reveal in"><span class="sec-label">Credits</span></div>
-  <div class="titles-grid">
-    <div class="title-card">
-      <div class="title-bg" style="background:linear-gradient(135deg,#d4956a 0%,#a05828 50%,#3a1e08 100%)"></div>
-      <div class="title-noise"></div>
-      <div class="title-content">
-        <div class="title-studio">EA · Full Circle</div>
-        <div class="title-game">skate.</div>
-        <div class="title-role">Technical Artist</div>
-        <div class="title-platforms"><span class="platform">PC</span><span class="platform">Console</span></div>
-      </div>
-    </div>
-    <div class="title-card">
-      <div class="title-bg" style="background:linear-gradient(135deg,#5a8cc8 0%,#2a5090 50%,#0a1838 100%)"></div>
-      <div class="title-noise"></div>
-      <div class="title-content">
-        <div class="title-studio">343 Industries · Xbox</div>
-        <div class="title-game">Halo Infinite</div>
-        <div class="title-role">Technical Artist</div>
-        <div class="title-platforms"><span class="platform">PC</span><span class="platform">Xbox</span></div>
-      </div>
-    </div>
-    <div class="title-card">
-      <div class="title-bg" style="background:linear-gradient(135deg,#d4b830 0%,#907800 50%,#281e00 100%)"></div>
-      <div class="title-noise"></div>
-      <div class="title-content">
-        <div class="title-studio">Sharkmob</div>
-        <div class="title-game">Exobourne</div>
-        <div class="title-role">Technical Artist</div>
-        <div class="title-platforms"><span class="platform">PC</span></div>
-      </div>
-    </div>
-    <div class="title-card">
-      <div class="title-bg" style="background:linear-gradient(135deg,#58c878 0%,#208848 50%,#083018 100%)"></div>
-      <div class="title-noise"></div>
-      <div class="title-content">
-        <div class="title-studio">Playdemic · EA</div>
-        <div class="title-game">Golf Clash</div>
-        <div class="title-role">Technical Artist</div>
-        <div class="title-platforms"><span class="platform">Mobile</span></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -949,14 +992,14 @@ html.modal-open{scrollbar-width:none !important}
         <li>GLSL</li>
         <li>Python</li>
         <li>Visual Scripting</li>
-        <li>Blueprint</li>
       </ul>
     </div>
     <div class="skill-col reveal in">
       <div class="skill-col-label">Design Tools</div>
       <ul class="skill-list">
         <li>Substance Suite</li>
-        <li>Adobe Suite</li>
+        <li>Photoshop</li>
+        <li>Illustrator</li>
         <li>Houdini</li>
         <li>Maya</li>
         <li>Blender</li>
@@ -1032,10 +1075,7 @@ html.modal-open{scrollbar-width:none !important}
 </footer>
 
 <script>
-const cur=document.getElementById('cur');
-if(cur){
-document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
-}
+
 
 document.querySelectorAll('.fb').forEach(b=>{
   b.addEventListener('click',()=>{
@@ -1084,7 +1124,7 @@ document.querySelectorAll('.etab').forEach(b=>{
 });
 
 const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');obs.unobserve(e.target)});
+  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');obs.unobserve(e.target)},{threshold:0.12,rootMargin:"0px 0px -60px 0px"});
 },{threshold:.06});
 function observeReveal(){document.querySelectorAll('.reveal:not(.in)').forEach(el=>obs.observe(el));}
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
@@ -1151,32 +1191,46 @@ function buildGrid() {
   });
   initLoadMore();
   observeReveal();
+
+  // Init auto scroll after cards are in the DOM
+  const tg = document.querySelector('.titles-grid');
+  if(tg){
+    // Duplicate cards for seamless infinite loop
+    Array.from(tg.children).forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden','true');
+      tg.appendChild(clone);
+    });
+    let paused = false;
+    const speed = 0.3;
+    function autoScroll(){
+      if(!paused){
+        tg.scrollLeft += speed;
+        if(tg.scrollLeft >= tg.scrollWidth / 2) tg.scrollLeft = 0;
+      }
+      requestAnimationFrame(autoScroll);
+    }
+    tg.addEventListener('mouseenter', ()=> paused = true);
+    tg.addEventListener('mouseleave', ()=> paused = false);
+    tg.addEventListener('touchstart', ()=> paused = true, {passive:true});
+    tg.addEventListener('touchend', ()=> setTimeout(()=> paused = false, 1500));
+    requestAnimationFrame(autoScroll);
+  }
 }
 
 function buildCredits(credits) {
-  const grid = document.querySelector('.titles-grid');
-  if (!grid) return;
-  grid.innerHTML = '';
-  credits.forEach((c, i) => {
-    const thumbClass = THUMBS[i % THUMBS.length];
-    const bgStyle = c.thumb ? `background-image:url('${c.thumb}');background-size:cover;background-position:center;` : '';
-    const card = document.createElement('div');
-    card.className = 'title-card reveal';
-    card.innerHTML = `
-      <div class="title-card-bg ${thumbClass}" style="width:100%;height:100%;position:relative;${bgStyle}">
-        <div style="position:absolute;inset:0;padding:1.4rem 1.6rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(6,4,2,0.97) 0%,rgba(6,4,2,0.5) 50%,transparent 100%)">
-          <div class="title-studio">${c.studio || ''}</div>
-          <div class="title-game">${c.game || ''}</div>
-          <div class="title-role">${c.role || ''}</div>
-          <div class="title-foot">
-            <div class="title-year">${c.year || ''}</div>
-            <div class="title-platforms">${(c.platforms||[]).map(p=>`<span class="platform">${p}</span>`).join('')}</div>
-          </div>
-        </div>
-      </div>`;
-    grid.appendChild(card);
-  });
-  observeReveal();
+  // Map JSON entries into the carousel's data shape and rebuild it.
+  const mapped = credits.map(c => ({
+    studio: c.studio || '',
+    game: c.game || '',
+    role: c.role || '',
+    platforms: c.platforms || [],
+    thumb: c.thumb || null,
+    bg: c.bg || null
+  }));
+  if (window.rebuildCreditsCarousel) {
+    window.rebuildCreditsCarousel(mapped);
+  }
 }
 
 // ── MODAL LOGIC ──
@@ -1501,6 +1555,137 @@ function showStatus(msg, type) {
 function hideStatus() {
   document.getElementById('cf-status').style.display = 'none';
 }
+
+
+// WORK BLUR REVEAL
+const workWrap = document.getElementById('work-grid-wrap');
+const workObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.intersectionRatio > 0.1) {
+      workWrap.classList.add('revealed');
+      workObs.disconnect();
+    }
+  });
+}, { threshold: 0.1 });
+if (workWrap) workObs.observe(workWrap);
+
+
+// CREDITS AUTO SCROLL — pure CSS
+
+
+// ─── CREDITS CAROUSEL ───────────────────────────────────────
+// Single source of truth: `pos` (px scrolled). One rAF loop drives
+// auto-scroll. Arrows just set a target. No clones, no CSS animation.
+
+let CREDITS_DATA = [
+  { studio:'EA · Full Circle', game:'skate.', role:'Technical Artist', platforms:['PC','Console'], bg:'linear-gradient(135deg,#d4956a 0%,#a05828 50%,#3a1e08 100%)' },
+  { studio:'343 Industries · Xbox', game:'Halo Infinite', role:'Technical Artist', platforms:['PC','Xbox'], bg:'linear-gradient(135deg,#5a8cc8 0%,#2a5090 50%,#0a1838 100%)' },
+  { studio:'Sharkmob', game:'Exobourne', role:'Technical Artist', platforms:['PC'], bg:'linear-gradient(135deg,#d4b830 0%,#907800 50%,#281e00 100%)' },
+  { studio:'Playdemic · EA', game:'Golf Clash', role:'Technical Artist', platforms:['Mobile'], bg:'linear-gradient(135deg,#58c878 0%,#208848 50%,#083018 100%)' },
+];
+
+(function initCredits(){
+  const track = document.getElementById('credits-track');
+  if (!track) return;
+
+  // Render enough repeated cards to always fill the viewport plus overflow.
+  // We render the data set N times so the row is much wider than the screen;
+  // when scroll passes one full data-set width we subtract it (seamless loop).
+  const REPEAT = 7;
+  function makeCard(d){
+    const el = document.createElement('div');
+    el.className = 'title-card';
+    const bg = d.thumb
+      ? "background-image:url('"+d.thumb+"');background-size:cover;background-position:center;"
+      : "background:"+(d.bg||'#222')+";";
+    el.innerHTML =
+      '<div class="title-bg" style="'+bg+'"></div>'+
+      '<div class="title-noise"></div>'+
+      '<div class="title-content">'+
+        '<div class="title-studio">'+(d.studio||'')+'</div>'+
+        '<div class="title-game">'+(d.game||'')+'</div>'+
+        '<div class="title-role">'+(d.role||'')+'</div>'+
+        '<div class="title-platforms">'+(d.platforms||[]).map(p=>'<span class="platform">'+p+'</span>').join('')+'</div>'+
+      '</div>';
+    return el;
+  }
+
+  function renderCards(){
+    track.innerHTML = '';
+    track.style.display = 'flex';
+    track.style.willChange = 'transform';
+    for (let r = 0; r < REPEAT; r++){
+      CREDITS_DATA.forEach(d => track.appendChild(makeCard(d)));
+    }
+  }
+  renderCards();
+
+  // expose rebuild so JSON loader can refresh the carousel data
+  window.rebuildCreditsCarousel = function(newData){
+    if (Array.isArray(newData) && newData.length) CREDITS_DATA = newData;
+    renderCards();
+    measure();
+  };
+
+  // We keep `pos` wrapping inside the MIDDLE of the repeated row so there are
+  // always buffer cards on the left AND right of the viewport.
+  // baseShift = how many sets in we start (gives left buffer).
+  let cardW = 0, setWidth = 0, centerPad = 0, baseShift = 0;
+  let pos = 0;                 // scroll position in px (relative to baseShift)
+  let pausedUntil = 0;
+  const AUTO_SPEED = 0.15;
+  let snapTarget = null;
+
+  function measure(){
+    const first = track.querySelector('.title-card');
+    cardW = first ? first.getBoundingClientRect().width : 300;
+    setWidth = cardW * CREDITS_DATA.length;
+    const wrap = track.parentElement;
+    const wrapW = wrap ? wrap.getBoundingClientRect().width : window.innerWidth;
+    centerPad = (wrapW - cardW) / 2;        // to center one card
+    // start 2 sets in, so there's always a full set of cards to the left
+    baseShift = setWidth * 2;
+  }
+  measure();
+  window.addEventListener('resize', measure);
+
+  function frame(now){
+    if (snapTarget !== null){
+      const diff = snapTarget - pos;
+      if (Math.abs(diff) < 0.5){
+        pos = snapTarget;
+        snapTarget = null;
+        pausedUntil = now + 2000;
+      } else {
+        pos += diff * 0.18;
+      }
+    } else if (now > pausedUntil){
+      pos += AUTO_SPEED;
+    }
+
+    // keep pos within one set width; carry snapTarget along
+    if (setWidth > 0){
+      while (pos >= setWidth){ pos -= setWidth; if (snapTarget !== null) snapTarget -= setWidth; }
+      while (pos < 0){ pos += setWidth; if (snapTarget !== null) snapTarget += setWidth; }
+    }
+
+    // final translate: center offset, minus the base buffer, minus scroll pos
+    track.style.transform = 'translateX(' + (centerPad - baseShift - pos) + 'px)';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Arrow: snap to the next/previous card boundary (centered) and pause
+  window.carouselNav = function(dir){
+    const base = (snapTarget !== null) ? snapTarget : pos;
+    // round to current card, then step one in the chosen direction
+    const currentCard = Math.round(base / cardW);
+    snapTarget = (currentCard + dir) * cardW;
+    pausedUntil = Infinity; // stay paused until snap completes
+  };
+
+})();
+
 
 // THEME TOGGLE
 function toggleTheme() {
